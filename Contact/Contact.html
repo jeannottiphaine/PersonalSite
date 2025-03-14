@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../Assets/LittleMe_icon.svg" type="image/x-icon">
+    <title>Tiphaine Jeannot - Contact</title>
+    <link rel="stylesheet" href="../Assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <img src="../Assets/LogoTJ.svg" alt="Logo" class="logo">
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/tiphaine-jeannot/" title="LinkedIn"><img src="../Assets/ButtonIn.svg" alt="LinkedIn"></a>
+                <a href="mailto:jeannot.tiphaine@gmail.com" title="Email"><img src="../Assets/ButtonMail.svg" alt="Mail"></a>
+            </div>
+        </div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../CV/cv.html">Background</a></li>
+            <a href="../Projets/Projets.html">Projects</a></li>
+            <a href="Contact.html" class="active"><span>Contact</span></a>
+        </nav>
+    </header>
+    <main id="container-contact">
+        <div id="pigeon-wrapper">
+            <img src="Pigeon.svg" alt="Illustration of Tiphaine Jeannot" class="pigeon-img">
+        </div>
+        <div class="contact-form">
+            <h2>Keep in Touch!</h2>
+            <form action="https://formspree.io/f/meoaqadr" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
