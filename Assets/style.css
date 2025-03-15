@@ -165,7 +165,15 @@ h2 {
 /* Cards for Background */
 
 #Container-CV {
-width: 100%;
+max-width: 60%;
+}
+
+.wrap{
+    padding-top: 60px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    display: flex
 }
 
 .card {
@@ -215,20 +223,30 @@ width: 100%;
     gap: 50px; /* Adds space between the two columns */
 }
 
-.experience,
-.academic {
-    width: 45%; /* Keeps both sections balanced */
+.experience{
+width: 30%;
 }
 
-/* Strong Vertical Separator (Centered) */
+.academic {
+width: 30%; /* Keeps both sections balanced */
+}
+
+
 .timeline {
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    height: 230%; 
-    width: 2px; /* Thick separator */
-    background: rgb(114, 113, 113);
-    transform: translateX(-50%);
+position : relative;
+width: 40%;
+}
+
+.timeline::after{
+content:"";
+height:100% ;
+width: 2px;
+background: rgb(114, 113, 113);
+position: absolute;
+left: 50%;
+top: 30%;
+height: 230%; 
+transform: translateX(-50%);
 }
 
 /* Year markers (Positioned in the center) */
