@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../Assets/LittleMe_icon.svg" type="image/x-icon">
+    <title>Tiphaine Jeannot - Projets</title>
+    <link rel="stylesheet" href="../Assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <img src="../Assets/LogoTJ.svg" alt="Logo" class="logo">
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/tiphaine-jeannot/" title="LinkedIn"><img src="../Assets/ButtonIn.svg" alt="LinkedIn"></a>
+                <a href="mailto:jeannot.tiphaine@gmail.com" title="Email"><img src="../Assets/ButtonMail.svg" alt="Mail"></a>
+            </div>
+        </div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../Background/Background.html">Background</a></li>
+            <a href="Projects.html" class="active"><span>Projects</span></a>
+            <a href="../Contact/Contact.html">Contact</a>
+        </nav>
+        
+    </header>
+        <!--  Section Filtres -->
+        <div class="filters-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Nom projet, thématique, etc.">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="tags">
+                <span class="tag" data-category="Travail">Travail</span>
+                <span class="tag" data-category="Perso">Perso</span>
+                <span class="tag" data-category="Ecole">Ecole</span>
+                <span class="tag" data-category="Event">Event</span>
+                <span class="tag" data-category="Association">Association</span>
+                <button id="resetFilter">Réinitialiser</button>
+            </div>
+        </div>  
+    <main class="projects">
+
+        <!--  Section des Projets -->
+        <section class="cards-container-projects">
+
+            <a href="ProjectsDetails/LookUp.html" class="card-project">
+                <div class="card-content-projects">
+                    <h3>LookUP</h3>
+                    <p>Description...</p>
+                    <div class="card-tags">
+                        <span class="card-tag" data-category="Ecole">Ecole</span>
+                    </div>                    
+                </div>
+                <img src="Medias/UVM_Vignette.svg" alt="Project Image">
+            </a>
+
+            <a href="ProjectsDetails/Lesquestionsd'EKO.html" class="card-project">
+                <div class="card-content-projects">
+                    <h3>Les questions d’EKO</h3>
+                    <p>Réalisé dans le cadre du Hackaton Reboot 2023 sur le thème de la communication responsable, ce livre jeunesse de 32 pages a été entièrement pensé, écrit et illustré en 3 jours...
+                    </p>
+                    <div class="card-tags">
+                        <span class="card-tag" data-category="Ecole">Ecole</span>
+                    </div>
+                </div>
+                <img src="Medias/Eko.svg" alt="Project Image"></div>
+
+            </a>
+
+            <a href="ProjectsDetails/UnisVertMarbourg.html" class="card-project">
+                <div class="card-content-projects">
+                    <h3>Unis Vert Marbourg</h3>
+                    <p>Le principe du défi était d’imaginer et d'organiser un voyage à Marbourg symbolisant l’amitié franco-allemande en se servant de moyens de transport alternatifs à l’avion et à la voiture.</p>
+                    <div class="card-tags">
+                        <span class="card-tag" data-category="Perso">Perso</span>
+                    </div>
+                </div>
+                <img src="Medias/UVM_Vignette.svg" alt="Project Image">
+                
+            </a>
+
+            <a href="ProjectsDetails/Blackminton2023.html" class="card-project">
+                <div class="card-content-projects">
+                    <h3>Blackminton 2023</h3>
+                    <p>Description...</p>
+                    <div class="card-tags">
+                        <span class="card-tag" data-category="Association">Association</span>
+                        <span class="card-tag" data-category="Event">Event</span>
+                    </div>
+                </div>
+                <img src="Medias/Eko.svg" alt="Project Image">
+            </a>
+        </section>
+    </main class="projects">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById("searchInput");
+            const cards = document.querySelectorAll(".card-project");
+            const tags = document.querySelectorAll(".tag");
+            const resetButton = document.getElementById("resetFilter");
+        
+            function filterProjects() {
+                let searchValue = searchInput.value.toLowerCase();
+                let activeTag = document.querySelector(".tag.active");
+                let categoryFilter = activeTag ? activeTag.getAttribute("data-category") : null;
+        
+                cards.forEach(card => {
+                    let title = card.querySelector("h3").textContent.toLowerCase();
+                    let cardTag = card.querySelector(".card-tag");
+                    let cardCategory = cardTag ? cardTag.getAttribute("data-category") : null;
+        
+                    let matchSearch = title.includes(searchValue);
+                    let matchCategory = categoryFilter ? cardCategory === categoryFilter : true;
+        
+                    card.style.display = matchSearch && matchCategory ? "block" : "none";
+            });
+        }
+    
+        // Barre de recherche
+        searchInput.addEventListener("input", filterProjects);
+    
+        // Filtrage par tags
+        tags.forEach(tag => {
+            tag.addEventListener("click", function() {
+                tags.forEach(t => t.classList.remove("active")); // Supprime l'état actif
+                this.classList.add("active"); // Active le tag sélectionné
+                filterProjects();
+            });
+        });
+    
+        // Bouton Réinitialiser
+        resetButton.addEventListener("click", function() {
+            searchInput.value = ""; // Efface la recherche
+            tags.forEach(tag => tag.classList.remove("active")); // Désactive tous les tags
+            filterProjects();
+        });
+    });
+    </script>
+        
+</body>
+</html>
