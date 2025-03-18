@@ -666,16 +666,41 @@ h4 {
 	text-align: justify;
 }
 
-.photo-grid{
+
+.photo-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-	gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 200px; /* Force uniform row height */
+    gap: 6px; /* Consistent spacing */
+    grid-auto-flow: row dense; /* Ensures perfect rectangle by filling gaps */
+	width: 100%
 }
 
-.photo-grid #project-img-wrapper {
+.img-projects-grid {
+    width: 100%;
+    height: 100%; /* Ensures images fill their grid cell */
+    object-fit: cover; /* Prevents distortion */
+    border-radius: 8px;
+}
+
+/*.photo-grid #project-img-wrapper {
 	height: 80px;
 	max-width: 150px;
 	margin: auto;
+ 
+} */
+
+
+/* Optional: Some images span larger for variation */
+.photo-grid img:nth-child(3n) { 
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Avoids last row breaking the rectangular grid */
+.photo-grid img:last-child {
+    grid-column: auto;
+    grid-row: auto;
 }
 
 .project-media{
