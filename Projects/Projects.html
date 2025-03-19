@@ -31,21 +31,39 @@
                 <input type="text" id="searchInput" placeholder="Project name, theme, etc.">
                 <i class="fas fa-search"></i>
             </div>
+        
             <div class="tags">
                 <span class="tag" data-category="Travail">Travail</span>
                 <span class="tag" data-category="Perso">Perso</span>
                 <span class="tag" data-category="Ecole">Ecole</span>
                 <span class="tag" data-category="Event">Event</span>
                 <span class="tag" data-category="Association">Association</span>
-                <button id="resetFilter">Réinitialiser</button>
             </div>
-        </div>  
+        
+            <div class="icons-container">
+                <i class="fas fa-filter filter-icon" id="toggleSortMenu"></i>
+                <i class="fas fa-sync-alt reset-icon" id="resetFilter"></i>
+            </div>
+        
+            <!-- Hidden Sort & Year Menu -->
+            <div id="sortMenu" class="hidden">
+                <select id="yearFilter">
+                    <option value="all">All Years</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                </select>
+        
+                <button id="sortAlphabetical">Sort A-Z</button>
+            </div>
+        </div>
+
     <main class="projects">
 
         <!--  Section des Projets -->
         <section class="cards-container-projects">
 
-            <a href="ProjectsDetails/LookUp.html" class="card-project">
+            <a href="ProjectsDetails/LookUp.html" class="card-project" data-year="2023">
                 <div class="card-content-projects">
                     <h3>LookUP</h3>
                     <p>Description...</p>
@@ -95,49 +113,72 @@
         </section>
     </main class="projects">
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const searchInput = document.getElementById("searchInput");
             const cards = document.querySelectorAll(".card-project");
             const tags = document.querySelectorAll(".tag");
             const resetButton = document.getElementById("resetFilter");
+            const yearFilter = document.getElementById("yearFilter");
+            const sortButton = document.getElementById("sortAlphabetical");
+            const sortMenu = document.getElementById("sortMenu");
+            const toggleSortMenu = document.getElementById("toggleSortMenu");
+            const container = document.querySelector(".cards-container-projects");
+        
+            // Toggle Sort & Year Menu when clicking the filter icon
+            toggleSortMenu.addEventListener("click", function () {
+                sortMenu.classList.toggle("visible");
+            });
         
             function filterProjects() {
                 let searchValue = searchInput.value.toLowerCase();
                 let activeTag = document.querySelector(".tag.active");
                 let categoryFilter = activeTag ? activeTag.getAttribute("data-category") : null;
+                let selectedYear = yearFilter.value;
         
                 cards.forEach(card => {
                     let title = card.querySelector("h3").textContent.toLowerCase();
-                    let cardTag = card.querySelector(".card-tag");
-                    let cardCategory = cardTag ? cardTag.getAttribute("data-category") : null;
+                    let cardTags = Array.from(card.querySelectorAll(".card-tag")).map(tag => tag.getAttribute("data-category"));
+                    let cardYear = card.getAttribute("data-year");
         
                     let matchSearch = title.includes(searchValue);
-                    let matchCategory = categoryFilter ? cardCategory === categoryFilter : true;
+                    let matchCategory = categoryFilter ? cardTags.includes(categoryFilter) : true;
+                    let matchYear = selectedYear === "all" || cardYear === selectedYear;
         
-                    card.style.display = matchSearch && matchCategory ? "block" : "none";
+                    card.style.display = matchSearch && matchCategory && matchYear ? "block" : "none";
+                });
+            }
+        
+            function sortProjects() {
+                const cardsArray = Array.from(container.getElementsByClassName("card-project"));
+        
+                cardsArray.sort((a, b) => {
+                    const titleA = a.querySelector("h3").textContent.toLowerCase();
+                    const titleB = b.querySelector("h3").textContent.toLowerCase();
+                    return titleA.localeCompare(titleB);
+                });
+        
+                cardsArray.forEach(card => container.appendChild(card));
+            }
+        
+            // Event Listeners
+            searchInput.addEventListener("input", filterProjects);
+            yearFilter.addEventListener("change", filterProjects);
+            tags.forEach(tag => {
+                tag.addEventListener("click", function () {
+                    tags.forEach(t => t.classList.remove("active"));
+                    this.classList.add("active");
+                    filterProjects();
+                });
             });
-        }
-    
-        // Barre de recherche
-        searchInput.addEventListener("input", filterProjects);
-    
-        // Filtrage par tags
-        tags.forEach(tag => {
-            tag.addEventListener("click", function() {
-                tags.forEach(t => t.classList.remove("active")); // Supprime l'état actif
-                this.classList.add("active"); // Active le tag sélectionné
+            resetButton.addEventListener("click", function () {
+                searchInput.value = "";
+                tags.forEach(tag => tag.classList.remove("active"));
+                yearFilter.value = "all";
                 filterProjects();
             });
+            sortButton.addEventListener("click", sortProjects);
         });
-    
-        // Bouton Réinitialiser
-        resetButton.addEventListener("click", function() {
-            searchInput.value = ""; // Efface la recherche
-            tags.forEach(tag => tag.classList.remove("active")); // Désactive tous les tags
-            filterProjects();
-        });
-    });
-    </script>
+        </script>
         
 </body>
 </html>
