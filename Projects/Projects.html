@@ -31,19 +31,21 @@
                 <input type="text" id="searchInput" placeholder="Project name, theme, etc.">
                 <i class="fas fa-search"></i>
             </div>
-        
-            <div class="tags">
-                <span class="tag" data-category="Travail">Travail</span>
-                <span class="tag" data-category="Perso">Perso</span>
-                <span class="tag" data-category="Ecole">Ecole</span>
-                <span class="tag" data-category="Event">Event</span>
-                <span class="tag" data-category="Association">Association</span>
+            <div class="tags-container">
+                <div class="tags">
+                    <span class="tag" data-category="Travail">Travail</span>
+                    <span class="tag" data-category="Perso">Perso</span>
+                    <span class="tag" data-category="Ecole">Ecole</span>
+                    <span class="tag" data-category="Event">Event</span>
+                    <span class="tag" data-category="Association">Association</span>
+                </div>       
+                    <div class="icons-container">
+                        <i class="fas fa-filter filter-icon" id="toggleSortMenu"></i>
+                        <i class="fas fa-sync-alt reset-icon" id="resetFilter"></i>
+                    </div>
             </div>
         
-            <div class="icons-container">
-                <i class="fas fa-filter filter-icon" id="toggleSortMenu"></i>
-                <i class="fas fa-sync-alt reset-icon" id="resetFilter"></i>
-            </div>
+
         
             <!-- Hidden Sort & Year Menu -->
             <div id="sortMenu" class="hidden">
@@ -71,7 +73,7 @@
                         <span class="card-tag" data-category="Ecole">Ecole</span>
                     </div>                    
                 </div>
-                <img src="Medias/LKUP_Logo-01.png" alt="Project Image">
+                <img class="img-card-project" src="Medias/LKUP_Logo-01.png" alt="Project Image">
             </a>
 
             <a href="ProjectsDetails/Lesquestionsd'EKO.html" class="card-project">
@@ -83,7 +85,7 @@
                         <span class="card-tag" data-category="Ecole">Ecole</span>
                     </div>
                 </div>
-                <img src="Medias/Eko.svg" alt="Project Image"></div>
+                <img class="img-card-project" src="Medias/Eko.svg" alt="Project Image"></div>
 
             </a>
 
@@ -95,7 +97,7 @@
                         <span class="card-tag" data-category="Perso">Perso</span>
                     </div>
                 </div>
-                <img src="Medias/UVM_Vignette.svg" alt="Project Image">
+                <img class="img-card-project" src="Medias/UVM_Vignette.svg" alt="Project Image">
                 
             </a>
 
@@ -108,7 +110,7 @@
                         <span class="card-tag" data-category="Event">Event</span>
                     </div>
                 </div>
-                <img src="Medias/Eko.svg" alt="Project Image">
+                <img class="img-card-project" src="Medias/Eko.svg" alt="Project Image">
             </a>
         </section>
     </main class="projects">

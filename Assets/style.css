@@ -166,7 +166,7 @@ h2 {
 
 #Container-CV {
 	max-width: 85%;
-	padding-top: 60px;
+	padding-top: 5%;
 	flex-wrap: wrap;
 	justify-content: center;
 	display: flex;
@@ -290,9 +290,7 @@ h2 {
 	padding: 10px 15px;
 	border-radius: 25px;
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-	width: 50%;
-	max-width: 600px;
-	margin: 0 auto 20px auto;
+	width: 30%;
 }
 
 .search-bar input {
@@ -342,11 +340,11 @@ h2 {
 	align-items: center;
 	justify-content: center;
 	gap: 15px;
-	padding: 20px;
+	padding: 30px;
 	border-radius: 10px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	margin-bottom: 10px;
-	background-color: #f5f5f5;
+	/* background-color: #f5f5f5; */
 }
 
 .controls {
@@ -375,6 +373,7 @@ h2 {
     display: flex;
     gap: 10px;
     cursor: pointer;
+	align-items: center;
 }
 
 
@@ -410,11 +409,12 @@ h2 {
 grid-template-columns: repeat(2, 1fr);
 gap: 80px;*/
 	width: 100%;
+	/* max-width: 50%; */
 	padding: 40px;
+	flex-wrap: wrap;
 	border-radius: 10px;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 .card-project {
@@ -427,7 +427,16 @@ gap: 80px;*/
 	padding: 20px;
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 	transition: transform 0.2s;
-	width: 100%;
+	max-width: 50%;
+}
+
+.img-card-project {
+	
+	object-fit: contain;
+	height: auto;
+	width: 120px;
+	border-radius: 10px;
+	
 }
 
 /* Ajustement pour éviter l'effet "cassé" après filtrage */
@@ -455,11 +464,6 @@ gap: 80px;*/
 	transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
-.cards-container-projects a img {
-	width: 120px;
-	height: auto;
-	border-radius: 10px;
-}
 
 /* Ensure active links don't have unwanted decorations */
 .cards-container-projects a:active {
@@ -468,15 +472,23 @@ gap: 80px;*/
 
 /* Cards tags */
 
+.tags-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: center;
+}
+
 .tags {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 	gap: 10px;
-	margin-top: 10px;
+	align-items: center;
 }
 
-.card-content-projects p {
+.card-content-projects > p {
 	margin-right: 50px;
 }
 
@@ -494,6 +506,7 @@ gap: 80px;*/
 	display: flex;
 	gap: 5px;
 	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .card-tag {
@@ -862,6 +875,56 @@ h4 {
 
 	.social-icons{
 		max-width: 20%;
+	}
+
+}
+
+/* Responsive: Mobile et tablettes */
+@media screen and (max-width: 768px) {
+	.timeline {
+		display: none; /* Cache la barre d'années */
+	}
+
+	/* Expérience et Éducation en colonne */
+	.timeline-container {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.experience, .academic {
+		width: 100%; /* Prend toute la largeur */
+	}
+
+	.card {
+		margin: 0 auto 20px auto; /* Centre les cartes */
+	}
+
+	.cards-container-projects {
+		flex-wrap: wrap;
+		width: 100%;
+		
+	}
+
+	.card-project {
+		flex-wrap: wrap;
+		max-width: 100%;
+	}
+
+	.filters-container{
+		flex-wrap: wrap;
+	}
+	
+	.search-bar{ 
+		width: 90%;
+	}
+
+	main.projects{ 
+		width: 90%;
+	}
+
+	.card-content-projects > p {
+		margin-right: 5px;
+		text-align: justify;
 	}
 
 }
