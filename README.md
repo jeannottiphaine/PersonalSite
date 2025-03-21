@@ -7,8 +7,8 @@ Index
 Page Projects 
 - Filters : Years - Sorting
 - Reinitialiser - qui n'affecte pas le sorting
-- Recentrer la search bar (height)
-- Réaligner au centre Search bar et les tags
+- Recentrer la search bar (height) - DONE
+- Réaligner au centre Search bar et les tags - DONE
 - Rendre la page projects responsive
 - Img dans card content Projects à la même taille (Taille fixe par CSS)
 
@@ -18,7 +18,12 @@ Finir les pages projets detail
 
 Page Unis Vert Marbourg
   - Grid a réparer
+
+Page LookUp : 
+- images ecrasées
  
 Contact : 
 - style.css line 737: Ajouter texte-align : center; pour centrer l'image du pigeon au dessus du formulaire.
+
+Footer
 
