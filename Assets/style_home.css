@@ -73,6 +73,8 @@ nav a.active::before {
 nav a.active {
     color: white; /* Make the text white when active */
     transform: rotate(-10deg); /* Apply rotation to the active item */
+    justify-content: center;
+    transform-origin: center center;
 }
 
 nav a:hover::before {
@@ -150,10 +152,137 @@ main {
 }
 
 .corner-video {
-   transform: scale(1.2);
+    transform: scale(1.2);
     position: absolute;
     left: -250px; /* Set it to 0 to make it touch the left edge */
     bottom: 80px;
     overflow: hidden; /* Ensure that the part of the video that goes out is hidden */
     z-index: 1;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1023px) {
+    nav {
+        gap: 12px; /* Reduce the gap */
+        padding: 8px 0; /* Adjust padding for smaller screens */
+        line-height: 50px;
+    }
+
+    nav a {
+        width: 100px; /* Adjust button width for tablets */
+        height: 40px; /* Adjust button height for tablets */
+        font-size: 14px; /* Adjust font size */
+    }
+
+    .social-icons{
+		max-width: 20%;
+	}
+
+
+
+    .hero {
+        display: flex;
+        flex-direction: column; /* Align elements vertically */
+        justify-content: center; /* Center vertically */
+        align-items: center; /* Center horizontally */
+        text-align: center; /* Ensure the text is centered */
+        padding: 20px; /* Optional: Add padding for better spacing */
+    }
+
+    .corner-video {
+        width: 100%;
+        height: auto;
+        max-width: 900px;
+        margin: 0 auto; /* Center the video horizontally */
+        position: relative; /* Change from absolute to relative to avoid overlapping */
+        left: 0; /* Reset the left property */
+        bottom: 30%; /* Adjust the bottom position for better responsiveness */
+        transform: scale(1); /* Reset the scale */
+        z-index: 1;
+    }
+
+    .nav-container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .social-icons {
+        margin-top: 15px; /* Add some space between nav and social icons */
+        justify-content: center; /* Center icons horizontally */
+        gap: 15px; /* Optional: space between icons */
+    }
+}
+
+/* Even smaller screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    padding: 10px; /* Add some padding for spacing */
+    }
+
+    nav {
+        gap: 8px; /* Further reduce the gap */
+        padding: 6px 0; /* Further adjust padding */
+        line-height: 40px;
+    }
+
+    nav a {
+        width: 90px; /* Adjust button width for mobile */
+        height: 35px; /* Adjust button height for mobile */
+        font-size: 12px; /* Adjust font size for mobile */
+    }
+
+    .social-icons{
+		max-width: 15%;
+	}
+
+    .hero p {
+        font-size: 18px;
+        display: flex;
+        flex-direction: column; /* Align elements vertically */
+        justify-content: center; /* Center vertically */
+        align-items: center; /* Center horizontally */
+        text-align: center; /* Ensure the text is centered */
+        padding: 20px; /* Optional: Add padding for better spacing */
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: column; /* Align elements vertically */
+        justify-content: center; /* Center vertically */
+        align-items: center; /* Center horizontally */
+        text-align: center; /* Ensure the text is centered */
+        padding: 15px; /* Optional: Adjust padding for small screens */
+    }
+
+    .corner-video {
+        width: 100%;
+        margin: 0 auto; /* Center it horizontally */
+        overflow: hidden; /* Ensure part of the video going out is hidden */
+        display: block; /* Ensure the video is block-level */
+        position: relative; /* Set position to relative for responsiveness */
+        bottom: 30%; /* Adjust the bottom position further for smaller screens */
+        transform: scale(1); /* Reset scaling */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    nav {
+        gap: 5px; /* Reduce the gap even further */
+        padding: 4px 0; /* Reduce the padding for very small screens */
+        line-height: 30px;
+    }
+
+    nav a {
+        width: 80px; /* Adjust button width for small screens */
+        height: 30px; /* Adjust button height for small screens */
+        font-size: 10px; /* Further adjust font size for small screens */
+    }
+
+    .social-icons{
+		max-width: 15%;
+	}
 }
