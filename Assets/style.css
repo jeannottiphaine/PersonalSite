@@ -764,31 +764,31 @@ h4 {
 
 
 .photo-grid {
-	display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: 200px; /* Force uniform row height */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* Flexible column size */
     gap: 6px; /* Consistent spacing */
-    grid-auto-flow: row dense; /* Ensures perfect rectangle by filling gaps */
-	width: 100%
+    grid-auto-flow: dense; /* Fills the available gaps in the grid */
+    width: 100%;
 }
 
 .img-projects-grid {
     width: 100%;
-    height: 100%; /* Ensures images fill their grid cell */
-    object-fit: cover; /* Prevents distortion */
-    border-radius: 8px;
+    height: 100%; /* Image height adjusts dynamically */
+    object-fit: cover; /* Ensures images fill their grid cells */
+    border-radius: 8px; /* Optional: smooth edges */
 }
+
 
 /*.photo-grid #project-img-wrapper {
 	height: 80px;
 	max-width: 150px;
 	margin: auto;
- 
+
 } */
 
 
 /* Optional: Some images span larger for variation */
-.photo-grid img:nth-child(3n) { 
+.photo-grid img:nth-child(3n) {
     grid-column: span 2;
     grid-row: span 2;
 }
