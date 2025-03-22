@@ -426,14 +426,13 @@ gap: 80px;*/
 	transition: transform 0.2s;
 	max-width: 50%;
 }
-
 .img-card-project {
-	
-	object-fit: contain;
-	height: auto;
-	width: 120px;
-	border-radius: 10px;
-	
+  object-fit: contain;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  min-width: 120px;
+  min-height: 120px;
 }
 
 /* Ajustement pour éviter l'effet "cassé" après filtrage */
