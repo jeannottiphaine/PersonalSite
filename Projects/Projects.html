@@ -27,39 +27,38 @@
     </header>
         <!--  Section Filtres -->
         <div class="filters-container">
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Project name, theme, etc.">
-                <i class="fas fa-search"></i>
-            </div>
-            <div class="tags-container">
-                <div class="tags">
-                    <span class="tag" data-category="Travail">Travail</span>
-                    <span class="tag" data-category="Perso">Perso</span>
-                    <span class="tag" data-category="Ecole">Ecole</span>
-                    <span class="tag" data-category="Event">Event</span>
-                    <span class="tag" data-category="Association">Association</span>
-                </div>       
-                    <div class="icons-container">
-                        <i class="fas fa-filter filter-icon" id="toggleSortMenu"></i>
-                        <i class="fas fa-sync-alt reset-icon" id="resetFilter"></i>
-                    </div>
-            </div>
-        
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Project name, theme, etc.">
+    <i class="fas fa-search"></i>
+  </div>
+  <div class="tags-container">
+    <div class="tags">
+      <span class="tag" data-category="Travail">Travail</span>
+      <span class="tag" data-category="Perso">Perso</span>
+      <span class="tag" data-category="Ecole">Ecole</span>
+      <span class="tag" data-category="Event">Event</span>
+      <span class="tag" data-category="Association">Association</span>
+    </div>
+    <!-- Icons container is now relatively positioned -->
+    <div class="icons-container" style="position: relative;">
+      <i class="fas fa-filter filter-icon" id="toggleSortMenu"></i>
+      <i class="fas fa-sync-alt reset-icon" id="resetFilter"></i>
 
-        
-            <!-- Hidden Sort & Year Menu -->
-            <div id="sortMenu" class="hidden">
-                <select id="yearFilter">
-                    <option value="all">All Years</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                </select>
-        
-                <button id="sortAlphabetical">Sort A-Z</button>
-            </div>
-        </div>
+      <!-- Hidden Sort & Year Menu moved inside icons-container -->
+      <div id="sortMenu">
+        <select id="yearFilter">
+          <option value="all">All Years</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+        </select>
+        <button id="sortAlphabetical">Sort A-Z</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <main class="projects">
 
@@ -128,8 +127,8 @@
             </a>
         </section>
     </main class="projects">
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+<script>
+document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("searchInput");
     const cards = document.querySelectorAll(".card-project");
     const tags = document.querySelectorAll(".tag");
@@ -140,12 +139,21 @@
     const toggleSortMenu = document.getElementById("toggleSortMenu");
     const container = document.querySelector(".cards-container-projects");
 
-    // Store the original order of the projects
-    const originalOrder = Array.from(cards);
+    // Keep track of the original order of the cards
+    const originalCardsOrder = Array.from(cards);
 
     // Toggle Sort & Year Menu when clicking the filter icon
-    toggleSortMenu.addEventListener("click", function () {
+    toggleSortMenu.addEventListener("click", function (e) {
+        // Toggle visibility and prevent event propagation
         sortMenu.classList.toggle("visible");
+        e.stopPropagation();
+    });
+
+    // Close the sort menu if clicking outside of it or the toggle icon
+    document.addEventListener("click", function (e) {
+        if (!sortMenu.contains(e.target) && !toggleSortMenu.contains(e.target)) {
+            sortMenu.classList.remove("visible");
+        }
     });
 
     function filterProjects() {
@@ -179,12 +187,7 @@
         cardsArray.forEach(card => container.appendChild(card));
     }
 
-    // Function to restore the original order of the projects
-    function restoreOriginalOrder() {
-        originalOrder.forEach(card => container.appendChild(card));
-    }
-
-    // Event Listeners
+    // Event Listeners for filtering and sorting
     searchInput.addEventListener("input", filterProjects);
     yearFilter.addEventListener("change", filterProjects);
     tags.forEach(tag => {
@@ -194,16 +197,33 @@
             filterProjects();
         });
     });
+
     resetButton.addEventListener("click", function () {
         searchInput.value = "";
         tags.forEach(tag => tag.classList.remove("active"));
         yearFilter.value = "all";
+        // Hide sort menu when reset is clicked
+        sortMenu.classList.remove("visible");
+
+        // Reset the sorting back to the original order
+        resetSorting();
+
         filterProjects();
-        restoreOriginalOrder();  // Restore the original order on reset
     });
-    sortButton.addEventListener("click", sortProjects);
+
+    sortButton.addEventListener("click", function () {
+        sortProjects();
+        // Hide the sort menu after clicking "Sort A-Z"
+        sortMenu.classList.remove("visible");
+    });
+
+    // Function to restore the original sorting order
+    function resetSorting() {
+        // Clear current cards and append them back in the original order
+        originalCardsOrder.forEach(card => container.appendChild(card));
+    }
 });
-        </script>
+</script>
         
 </body>
 </html>

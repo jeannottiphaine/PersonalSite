@@ -354,12 +354,16 @@ h2 {
 }
 
 #sortMenu {
-    display: none;
+    display: none; /* hidden by default */
     background: #f9f9f9;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     width: 200px;
+    position: absolute;
+    top: 100%; /* positions it directly below the icons-container */
+    left: 0;   /* aligns it to the left */
+    z-index: 999;
 }
 
 #sortMenu.visible {
@@ -852,7 +856,7 @@ h4 {
 	#project-img-wrapper {
 		width: 100%;
 	}
-	
+
 	.project-content {
 		max-width: 90%;
 	}
@@ -897,51 +901,59 @@ footer {
     margin: 0 10px;
 }
 
+/* Reset body and html to prevent margin/padding issues */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll if there's any overflow */
+}
+
 /* Responsive: Mobile et tablettes */
 @media screen and (max-width: 768px) {
-	.timeline {
-		display: none; /* Cache la barre d'années */
-	}
+.timeline {
+display: none; /* Cache la barre d'années */
+}
 
-	/* Expérience et Éducation en colonne */
-	.timeline-container {
-		flex-direction: column;
-		width: 100%;
-	}
+/* Expérience et Éducation en colonne */
+.timeline-container {
+flex-direction: column;
+width: 100%;
+}
 
-	.experience, .academic {
-		width: 100%; /* Prend toute la largeur */
-	}
+.experience, .academic {
+width: 100%; /* Prend toute la largeur */
+}
 
-	.card {
-		margin: 0 auto 20px auto; /* Centre les cartes */
-	}
+.card {
+margin: 0 auto 20px auto; /* Centre les cartes */
+}
 
-	.cards-container-projects {
-		flex-wrap: wrap;
-		width: 100%;
-		
-	}
+.cards-container-projects {
+flex-wrap: wrap;
+width: 100%;
 
-	.card-project {
-		flex-wrap: wrap;
-		max-width: 100%;
-	}
+}
 
-	.filters-container{
-		flex-wrap: wrap;
-	}
-	
-	.search-bar{ 
-		width: 90%;
-	}
+.card-project {
+flex-wrap: wrap;
+max-width: 100%;
+}
 
-	main.projects{ 
-		width: 90%;
-	}
+.filters-container{
+flex-wrap: wrap;
+}
 
-	.card-content-projects > p {
-		margin-right: 5px;
-		text-align: justify;
-	}
+.search-bar{
+width: 90%;
+}
+
+main.projects{
+width: 90%;
+}
+
+.card-content-projects > p {
+margin-right: 5px;
+text-align: justify;
+}
 }
