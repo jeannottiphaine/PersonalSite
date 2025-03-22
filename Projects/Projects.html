@@ -130,70 +130,79 @@
     </main class="projects">
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const searchInput = document.getElementById("searchInput");
-            const cards = document.querySelectorAll(".card-project");
-            const tags = document.querySelectorAll(".tag");
-            const resetButton = document.getElementById("resetFilter");
-            const yearFilter = document.getElementById("yearFilter");
-            const sortButton = document.getElementById("sortAlphabetical");
-            const sortMenu = document.getElementById("sortMenu");
-            const toggleSortMenu = document.getElementById("toggleSortMenu");
-            const container = document.querySelector(".cards-container-projects");
-        
-            // Toggle Sort & Year Menu when clicking the filter icon
-            toggleSortMenu.addEventListener("click", function () {
-                sortMenu.classList.toggle("visible");
-            });
-        
-            function filterProjects() {
-                let searchValue = searchInput.value.toLowerCase();
-                let activeTag = document.querySelector(".tag.active");
-                let categoryFilter = activeTag ? activeTag.getAttribute("data-category") : null;
-                let selectedYear = yearFilter.value;
-        
-                cards.forEach(card => {
-                    let title = card.querySelector("h3").textContent.toLowerCase();
-                    let cardTags = Array.from(card.querySelectorAll(".card-tag")).map(tag => tag.getAttribute("data-category"));
-                    let cardYear = card.getAttribute("data-year");
-        
-                    let matchSearch = title.includes(searchValue);
-                    let matchCategory = categoryFilter ? cardTags.includes(categoryFilter) : true;
-                    let matchYear = selectedYear === "all" || cardYear === selectedYear;
-        
-                    card.style.display = matchSearch && matchCategory && matchYear ? "block" : "none";
-                });
-            }
-        
-            function sortProjects() {
-                const cardsArray = Array.from(container.getElementsByClassName("card-project"));
-        
-                cardsArray.sort((a, b) => {
-                    const titleA = a.querySelector("h3").textContent.toLowerCase();
-                    const titleB = b.querySelector("h3").textContent.toLowerCase();
-                    return titleA.localeCompare(titleB);
-                });
-        
-                cardsArray.forEach(card => container.appendChild(card));
-            }
-        
-            // Event Listeners
-            searchInput.addEventListener("input", filterProjects);
-            yearFilter.addEventListener("change", filterProjects);
-            tags.forEach(tag => {
-                tag.addEventListener("click", function () {
-                    tags.forEach(t => t.classList.remove("active"));
-                    this.classList.add("active");
-                    filterProjects();
-                });
-            });
-            resetButton.addEventListener("click", function () {
-                searchInput.value = "";
-                tags.forEach(tag => tag.classList.remove("active"));
-                yearFilter.value = "all";
-                filterProjects();
-            });
-            sortButton.addEventListener("click", sortProjects);
+    const searchInput = document.getElementById("searchInput");
+    const cards = document.querySelectorAll(".card-project");
+    const tags = document.querySelectorAll(".tag");
+    const resetButton = document.getElementById("resetFilter");
+    const yearFilter = document.getElementById("yearFilter");
+    const sortButton = document.getElementById("sortAlphabetical");
+    const sortMenu = document.getElementById("sortMenu");
+    const toggleSortMenu = document.getElementById("toggleSortMenu");
+    const container = document.querySelector(".cards-container-projects");
+
+    // Store the original order of the projects
+    const originalOrder = Array.from(cards);
+
+    // Toggle Sort & Year Menu when clicking the filter icon
+    toggleSortMenu.addEventListener("click", function () {
+        sortMenu.classList.toggle("visible");
+    });
+
+    function filterProjects() {
+        let searchValue = searchInput.value.toLowerCase();
+        let activeTag = document.querySelector(".tag.active");
+        let categoryFilter = activeTag ? activeTag.getAttribute("data-category") : null;
+        let selectedYear = yearFilter.value;
+
+        cards.forEach(card => {
+            let title = card.querySelector("h3").textContent.toLowerCase();
+            let cardTags = Array.from(card.querySelectorAll(".card-tag")).map(tag => tag.getAttribute("data-category"));
+            let cardYear = card.getAttribute("data-year");
+
+            let matchSearch = title.includes(searchValue);
+            let matchCategory = categoryFilter ? cardTags.includes(categoryFilter) : true;
+            let matchYear = selectedYear === "all" || cardYear === selectedYear;
+
+            card.style.display = matchSearch && matchCategory && matchYear ? "block" : "none";
         });
+    }
+
+    function sortProjects() {
+        const cardsArray = Array.from(container.getElementsByClassName("card-project"));
+
+        cardsArray.sort((a, b) => {
+            const titleA = a.querySelector("h3").textContent.toLowerCase();
+            const titleB = b.querySelector("h3").textContent.toLowerCase();
+            return titleA.localeCompare(titleB);
+        });
+
+        cardsArray.forEach(card => container.appendChild(card));
+    }
+
+    // Function to restore the original order of the projects
+    function restoreOriginalOrder() {
+        originalOrder.forEach(card => container.appendChild(card));
+    }
+
+    // Event Listeners
+    searchInput.addEventListener("input", filterProjects);
+    yearFilter.addEventListener("change", filterProjects);
+    tags.forEach(tag => {
+        tag.addEventListener("click", function () {
+            tags.forEach(t => t.classList.remove("active"));
+            this.classList.add("active");
+            filterProjects();
+        });
+    });
+    resetButton.addEventListener("click", function () {
+        searchInput.value = "";
+        tags.forEach(tag => tag.classList.remove("active"));
+        yearFilter.value = "all";
+        filterProjects();
+        restoreOriginalOrder();  // Restore the original order on reset
+    });
+    sortButton.addEventListener("click", sortProjects);
+});
         </script>
         
 </body>
