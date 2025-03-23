@@ -437,6 +437,21 @@ gap: 80px;*/
   border-radius: 10px;
   min-width: 120px;
   min-height: 120px;
+  border: 2px solid grey;
+}
+
+.img-card-container {
+  position: relative;
+  display: inline-block;
+}
+
+.img-card-crown {
+  position: absolute;
+  top: -20%; /* Adjust this to position the crown above the image */
+  left: 80%; /* Center the crown horizontally */
+  transform: translateX(-50%); /* Center the crown */
+  width: 30px; /* Size of the crown image */
+  height: 30px; /* Size of the crown image */
 }
 
 /* Ajustement pour éviter l'effet "cassé" après filtrage */
