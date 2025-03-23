@@ -832,6 +832,33 @@ h4 {
 	color: #2980b9;
 }
 
+.cv-bubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-image: url('ClassicButton.svg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: black;
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            color: white;
+        }
+
+.cv-bubble:hover {
+            transform: scale(1.2);
+        }
+
 @media screen and (max-width: 1023px) {
 	#pigeon-wrapper {
 		width: 100%;
