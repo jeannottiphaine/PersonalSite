@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <link rel="shortcut icon" href="Assets/Logo_Bottle.svg" type="image/x-icon">
+    <meta charset="utf-8" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Video stays behind everything */
+        }
+
+        #click-zone {
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            width: 40%;
+            height: 40%;
+            cursor: pointer;
+            z-index: 3; /* Click zone always on top */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="video-container">
+        <video id="myVideo" autoplay muted>
+            <source src="Animations/ABottleInTheSea.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la balise vidéo.
+        </video>
+        <div id="click-zone"></div> <!-- Big invisible button -->
+    </div>
+
+    <script>
+        var video = document.getElementById('myVideo'),
+            clickZone = document.getElementById('click-zone'),
+            currentSection = 0,
+            sections = [
+                { start: 0, end: 7.59, next: 8, loop: true },   // Loop 0-8s → Click to play 8-11s
+                { start: 8, end: 11, next: 11, loop: false }, // Play 8-11s → Click to play 11-16s
+                { start: 11, end: 16, next: 16, loop: true }, // Loop 11-16s → Click to play 16-25s
+                { start: 16, end: 25, next: 25, loop: false }, // Play 16-25s → Click to play 25-30s
+                { start: 25, end: 30, next: "redirect", loop: true } // Last loop → Click to exit
+            ];
+
+        let isLooping = false;
+
+        function setSection(index) {
+            currentSection = index;
+            video.currentTime = sections[index].start;
+            video.play();
+            isLooping = sections[index].loop;
+        }
+
+        clickZone.onclick = () => {
+            let nextStart = sections[currentSection].next;
+
+            if (nextStart === "redirect") {
+                window.location.href = "https:www.tiphaine-jeannot.com";
+            } else {
+                setSection(currentSection + 1); // Move to the next section
+            }
+        };
+
+        video.addEventListener('timeupdate', function () {
+            let position = video.currentTime;
+            let currentEnd = sections[currentSection].end;
+
+            // Si la vidéo atteint la fin d'une section et qu'elle doit boucler, on la réinitialise à son début
+            if (position >= currentEnd) {
+                if (isLooping) {
+                    video.currentTime = sections[currentSection].start;
+                } else {
+                    // Quand la section ne doit pas boucler, on passe à la section suivante
+                    if (currentSection < sections.length - 1) {
+                        setSection(currentSection + 1);
+                    }
+                }
+            }
+        });
+
+        setSection(0); // Start from section 0
+    </script>
+</body>
+
+</html>
+
+
+        setSection(0); // Start from section 0
+    </script>
+</body>
+
+</html>
+
+< !Modifier les box changer l'accroche de la lettre, faire que ça boucle, refaire les vagues, cliquez ici, raffiner boîte bouchon, forcer la lecture avant clique bouton, cliquez ici changer boucle début et à la fin, CR lettre ->   >
