@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-      <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="../../Assets/LittleMe_icon.svg" type="image/x-icon">
-        <title>Tiphaine Jeannot - EKO</title>
+        <title>Tiphaine Jeannot - Les questions d'EKO</title>
         <link rel="stylesheet" href="../../Assets/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
@@ -19,51 +18,181 @@
                 </div>
             </div>
             <nav>
-                <a href="../index.html">Home</a>
-                <a href="../../Background/Background.html">Background</a></li>
-                <a href="../Projects.html" class="active"><span>Projects</span></a>
+                <a href="../../index.html">Accueil</a>
+                <a href="../../Background/Background.html">Parcours</a></li>
+                <a href="../Projects.html" class="active"><span>Projets</span></a>
                 <a href="../../Contact/Contact.html">Contact</a>
             </nav>
         </header>
         <main>
                 <section class="project-detail">
                     <div class="URL-Projects">
-                        <p><a href="../Projects.html">Projects </a> > Eko's Questions</p> 
-                      
+                        <p><a href="../Projects.html">Projects </a> > Les questions d'EKO</p>
+
                     </div>
-                    <h2>Eko's questions</h2>
+                    <h2>Les questions d'EKO</h2>
+                    <h3>Sensibiliser à la décroissance</h3>
+
+                <h3>Contexte & objectifs</h3>
                 <div class="project-content">
-                    <div id="project-img-wrapper">
-                        <img src="../Medias/Eko.svg" alt="EKO Logo" class="img-projects"></img>
+                    <div class="project-img-wrapper">
+                        <img src="../Medias/EKO_5.svg" alt="Blackminton Logo" class="img-projects"></img>
                     </div>
                     <div class="project-description">
-                        <p>...
+                        <p>Le projet EKO a été conçu lors du Hackathon
+                            Reboot! 2023, un événement dédié à la création
+                            de solutions de communication responsables et
+                            innovantes. Le thème central du Hackathon était
+                            "Ralentir ou périr", un appel à la prise de
+                            conscience collective sur la nécessité de repenser
+                            notre manière de consommer, de produire et de
+                            vivre.
                         </p>
                     </div>
                 </div>
+
+
                 <div class="project-content">
                     <div class="project-img-wrapper">
-                        <img src="../Medias/EKO_Groupe.jpg" alt="EKO Photo groupe"class="img-projects"></img>
+                        <img src="../Medias/EKO_4.svg" alt="Blackminton Logo" class="img-projects"></img>
                     </div>
                     <div class="project-description">
-                        <p>...
+                        <h3>Stratégie & insight</h3>
+                        <p>Face à ce challenge, nous avons choisi de nous
+                            concentrer sur la sensibilisation à la décroissance
+                            et la consommation responsable auprès des
+                            jeunes générations. L’idée était de trouver un
+                            moyen d’aborder ces sujets essentiels de manière
+                            accessible, tout en restant fidèle à l'esprit du
+                            thème du Hackathon. En effet, la décroissance et
+                            la consommation responsable sont des concepts
+                            cruciaux pour l'avenir, mais leur communication se
+                            révèle parfois complexe, notamment pour un
+                            public jeune.
                         </p>
                     </div>
                 </div>
+
+
                 <div class="project-content">
                     <div class="project-img-wrapper">
-                        <img src="../Medias/Eko.svg" alt="EKO"class="img-projects"></img>
+                        <img src="../../Projects/Medias/EKO_Groupe.jpg" alt="Blackminton Mockup"class="img-projects"></img>
+                    </div>
+                    <div class="project-description">
+                        <h3>Solution créative</h3>
+                        <p>L’une des principales difficultés rencontrées dans la
+                            sensibilisation à ces enjeux réside dans le fait que les jeunes
+                            générations n’ont souvent qu’une vision limitée des impacts de
+                            leur consommation quotidienne. Il nous a semblé essentiel
+                            d'aborder ces problématiques de manière créative et ludique,
+                            tout en évitant le ton moralisateur, pour créer un outil à la fois
+                            éducatif et engageant. <br>
+                            Nous avons donc opté pour un livre jeunesse, une forme
+                            traditionnelle mais intemporelle, pour permettre aux enfants
+                            d'aborder ces concepts dans un cadre familial, avec leurs
+                            parents, qui sont les premiers lecteurs de ce type d’ouvrage.
+
+                            </p>
                     </div>
                 </div>
-                <h3>A few photos from the project</h3>
+
+                <h3>Lire le livre</h3>
                 <div class="photo-grid">
-                    <img src="../../Projects/Medias/Eko.svg" alt="EKO Mockup"class="img-projects"></img>
-                    <img src="../../Projects/Medias/Eko.svg" alt="EKO Mockup"class="img-projects"></img>
+                    <img src="../../Projects/Medias/EKO_1.PNG" alt="BLK 2" class="img-projects-grid">
+                    <img src="../../Projects/Medias/EKO_2.PNG" alt="BLK 3" class="img-projects-grid">
+                    <img src="../../Projects/Medias/EKO_3.PNG" alt="BLK 4" class="img-projects-grid">
+
                 </div>
+
+                <h3>Lire la reco du projet</h3>
+                      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
+                    <div id="canvas-wrapper-pd">
+                      <canvas id="pdf-canvas"></canvas>
+                    </div>
+
+
+                    <button onclick="prevPage()">⬅️ Page précédente</button>
+                    <span>Page <span id="page-num">1</span> / <span id="page-count">?</span></span>
+                    <button onclick="nextPage()">Page suivante ➡️</button>
+
+                <h3>Equipe</h3>
+                    <p> Lucie Renaut, Djeah Florenza, Erwan Chauvigné, Tiphaine Jeannot </p>
+
+
+
+                <h3>Partenaires</h3>
+                    <div class="photo-grid">
+                        <img src="../../Projects/Medias/EKO_REBOOT-LOGO.svg" alt="Blackminton Mockup"class="img-projects"></img>
+                        <img src="../../Projects/Medias/EKO_Raisonnees-LOGO.png" alt="Blackminton Mockup"class="img-projects"><
+                        <img src="../../Projects/Medias/EKO_ISCOM-LOGO.webp" alt="Blackminton Mockup"class="img-projects"><
+                    </div>
+
 
             </section>
         </main>
 
-        
+    <script>
+  const url = "../../Projects/Medias/EKO_reco.pdf"; // Remplace par le chemin vers ton PDF
+  const pdfjsLib = window['pdfjs-dist/build/pdf'];
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.worker.min.js';
+
+  let pdfDoc = null,
+      pageNum = 1,
+      pageRendering = false,
+      pageNumPending = null,
+      canvas = document.getElementById('pdf-canvas'),
+      ctx = canvas.getContext('2d');
+
+  function renderPage(num) {
+    pageRendering = true;
+    pdfDoc.getPage(num).then(function(page) {
+      const viewport = page.getViewport({scale: 1.5});
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      const renderContext = {
+        canvasContext: ctx,
+        viewport: viewport
+      };
+      const renderTask = page.render(renderContext);
+
+      renderTask.promise.then(function () {
+        pageRendering = false;
+        if (pageNumPending !== null) {
+          renderPage(pageNumPending);
+          pageNumPending = null;
+        }
+      });
+    });
+
+    document.getElementById('page-num').textContent = num;
+  }
+
+  function queueRenderPage(num) {
+    if (pageRendering) {
+      pageNumPending = num;
+    } else {
+      renderPage(num);
+    }
+  }
+
+  function prevPage() {
+    if (pageNum <= 1) return;
+    pageNum--;
+    queueRenderPage(pageNum);
+  }
+
+  function nextPage() {
+    if (pageNum >= pdfDoc.numPages) return;
+    pageNum++;
+    queueRenderPage(pageNum);
+  }
+
+  pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
+    pdfDoc = pdfDoc_;
+    document.getElementById('page-count').textContent = pdfDoc.numPages;
+    renderPage(pageNum);
+  });
+</script>
     </body>
-    </html>
+    </html><!DOCTYPE html>
