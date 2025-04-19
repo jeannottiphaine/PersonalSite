@@ -147,6 +147,28 @@ nav a:hover {
 	transform: rotate(-10deg);
 }
 
+
+/* Style pour le lien CV (gras et marron, sans hover) */
+.cv-link {
+  margin-left: auto; /* Cette propriété pousse le lien CV tout à gauche */
+}
+
+.cv-link a {
+  color: #8B4513; /* Marron */
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold; /* Mettre le texte en gras */
+  padding: 5px 10px;
+}
+
+/* Supprimer tous les effets au survol */
+.cv-link a:hover {
+  color: #8B4513; /* Maintenir la couleur marron */
+  text-decoration: none; /* Pas de soulignement */
+  background-color: transparent; /* Pas de changement de fond */
+  border: none; /* Pas de bordure */
+}
+
 main {
 	display: flex;
 	justify-content: space-around;
@@ -561,8 +583,8 @@ gap: 80px;*/
 }
 
 .tag[data-category="Association"] {
-	background: #fff9b0; /* Jaune pastel */
-	color: #f57f17;
+	background: #a8e6cf; /* Jaune pastel #fff9b0 et #f57f17*/
+	color:  #2e7d32; /* Couleur travail */
 }
 
 .tag:hover {
