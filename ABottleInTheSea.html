@@ -18,8 +18,8 @@
         }
 
         video {
-            width: 100%;
             height: 100%;
+            width: 100%;
             object-fit: cover;
             position: absolute;
             top: 0;
@@ -53,11 +53,11 @@
             clickZone = document.getElementById('click-zone'),
             currentSection = 0,
             sections = [
-                { start: 0, end: 7.59, next: 8, loop: true },   // Loop 0-8s → Click to play 8-11s
-                { start: 8, end: 11, next: 11, loop: false }, // Play 8-11s → Click to play 11-16s
-                { start: 11, end: 16, next: 16, loop: true }, // Loop 11-16s → Click to play 16-25s
-                { start: 16, end: 25, next: 25, loop: false }, // Play 16-25s → Click to play 25-30s
-                { start: 25, end: 30, next: "redirect", loop: true } // Last loop → Click to exit
+                { start: 0, end: 10.02, next: 10.03, loop: true },   // Loop 0-8s → Click to play 8-11s
+                { start: 10.03, end: 12.18, next: 12.19, loop: false }, // Play 8-11s → Click to play 11-16s
+                { start: 12.19, end: 17.18, next: 17.19, loop: true }, // Loop 11-16s → Click to play 16-25s
+                { start: 17.19, end: 24.28, next: 24.29, loop: false }, // Play 16-25s → Click to play 25-30s
+                { start: 24.29, end: 30, next: "redirect", loop: true } // Last loop → Click to exit
             ];
 
         let isLooping = false;
