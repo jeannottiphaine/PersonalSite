@@ -2,7 +2,7 @@
 <html lang="en-us">
 
 <head>
-    <link rel="shortcut icon" href="/ABottleInTheSea/Assets/Logo_Bottle.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="ABottleInTheSea/Assets/Logo_Bottle.svg" type="image/x-icon">
     <meta charset="utf-8" />
     <style>
         * {
@@ -49,54 +49,54 @@
     </div>
 
     <script>
-        var video = document.getElementById('myVideo'),
-            clickZone = document.getElementById('click-zone'),
-            currentSection = 0,
-            sections = [
-                { start: 0, end: 10.02, next: 10.03, loop: true },   // Loop 0-8s → Click to play 8-11s
-                { start: 10.03, end: 12.18, next: 12.19, loop: false }, // Play 8-11s → Click to play 11-16s
-                { start: 12.19, end: 17.18, next: 17.19, loop: true }, // Loop 11-16s → Click to play 16-25s
-                { start: 17.19, end: 24.28, next: 24.29, loop: false }, // Play 16-25s → Click to play 25-30s
-                { start: 24.29, end: 30, next: "redirect", loop: true } // Last loop → Click to exit
-            ];
+        const video = document.getElementById('myVideo');
+        const clickZone = document.getElementById('click-zone');
 
+        let currentSection = 0;
         let isLooping = false;
+
+        const sections = [
+            { start: 0, end: 10.02, next: 10.03, loop: true },
+            { start: 10.03, end: 12.18, next: 12.19, loop: false },
+            { start: 12.19, end: 17.18, next: 17.19, loop: true },
+            { start: 17.19, end: 24.28, next: 24.29, loop: false },
+            { start: 24.29, end: 30, next: "redirect", loop: true }
+        ];
 
         function setSection(index) {
             currentSection = index;
+            isLooping = sections[index].loop;
             video.currentTime = sections[index].start;
             video.play();
-            isLooping = sections[index].loop;
         }
 
         clickZone.onclick = () => {
-            let nextStart = sections[currentSection].next;
-
-            if (nextStart === "redirect") {
+            const next = sections[currentSection].next;
+            if (next === "redirect") {
                 window.location.href = "index.html";
             } else {
-                setSection(currentSection + 1); // Move to the next section
+                setSection(currentSection + 1);
             }
         };
 
-        video.addEventListener('timeupdate', function () {
-            let position = video.currentTime;
-            let currentEnd = sections[currentSection].end;
+        function monitorTime() {
+            const pos = video.currentTime;
+            const { start, end, loop } = sections[currentSection];
+            const epsilon = 0.05; // Higher precision tolerance
 
-            // Si la vidéo atteint la fin d'une section et qu'elle doit boucler, on la réinitialise à son début
-            if (position >= currentEnd) {
-                if (isLooping) {
-                    video.currentTime = sections[currentSection].start;
-                } else {
-                    // Quand la section ne doit pas boucler, on passe à la section suivante
-                    if (currentSection < sections.length - 1) {
-                        setSection(currentSection + 1);
-                    }
+            if (pos >= end - epsilon) {
+                if (loop) {
+                    video.currentTime = start;
+                } else if (currentSection < sections.length - 1) {
+                    setSection(currentSection + 1);
                 }
             }
-        });
 
-        setSection(0); // Start from section 0
+            requestAnimationFrame(monitorTime); // Continue monitoring on every frame
+        }
+
+        video.addEventListener('play', monitorTime);
+        setSection(0);
     </script>
 </body>
 
