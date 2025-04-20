@@ -105,16 +105,15 @@
                 </div>
 
                   <h3>Lire la reco du projet</h3>
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
-                  <div id="canvas-wrapper">
-                    <canvas id="pdf-canvas"></canvas>
-                  </div>
+                    <div id="canvas-wrapper">
+                      <canvas id="pdf-canvas"></canvas>
+                    </div>
 
-                  <div>
+                    <div style="text-align: center;">
                     <button onclick="prevPage()">⬅️ Page précédente</button>
                     <span>Page <span id="page-num">1</span> / <span id="page-count">?</span></span>
                     <button onclick="nextPage()">Page suivante ➡️</button>
-                  </div>
+                    </div>
 
                 <h3>Equipe</h3>
                     <p> Lucie Renaut, Djeah Florenza, Erwan Chauvigné, Tiphaine Jeannot </p>
@@ -126,74 +125,80 @@
                         <img src="../../Projects/Medias/EKO_REBOOT-LOGO.svg" alt="Blackminton Mockup" class="img-projects">
                         <img src="../../Projects/Medias/EKO_Raisonnees-LOGO.png" alt="Blackminton Mockup" class="img-projects">
                         <img src="../../Projects/Medias/EKO_ISCOM-LOGO.webp" alt="Blackminton Mockup" class="img-projects">
-                    </div>
+                </div>
 
 
             </section>
         </main>
 
-    <script>
-  const url = "../../Projects/Medias/EKO_reco.pdf"; // Remplace par le chemin vers ton PDF
-  const pdfjsLib = window['pdfjs-dist/build/pdf'];
-  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.worker.min.js';
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-  let pdfDoc = null,
-      pageNum = 1,
-      pageRendering = false,
-      pageNumPending = null,
-      canvas = document.getElementById('canvas'),
-      ctx = canvas.getContext('2d');
+  <script>
+          const pdfjsLib = window['pdfjsLib'];
+          pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-  function renderPage(num) {
-    pageRendering = true;
-    pdfDoc.getPage(num).then(function(page) {
-      const viewport = page.getViewport({scale: 1.5});
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
 
-      const renderContext = {
-        canvasContext: ctx,
-        viewport: viewport
-      };
-      const renderTask = page.render(renderContext);
+          const url = '../../Projects/Medias/EKO_reco.pdf'; // Remplace par le chemin de ton PDF
 
-      renderTask.promise.then(function () {
-        pageRendering = false;
-        if (pageNumPending !== null) {
-          renderPage(pageNumPending);
-          pageNumPending = null;
-        }
-      });
-    });
+          let pdfDoc = null,
+              pageNum = 1,
+              pageRendering = false,
+              pageNumPending = null,
+              canvas = document.getElementById('pdf-canvas'),
+              ctx = canvas.getContext('2d');
 
-    document.getElementById('page-num').textContent = num;
-  }
+          function renderPage(num) {
+            pageRendering = true;
+            pdfDoc.getPage(num).then(function(page) {
+              const viewport = page.getViewport({scale: 1.5});
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
 
-  function queueRenderPage(num) {
-    if (pageRendering) {
-      pageNumPending = num;
-    } else {
-      renderPage(num);
-    }
-  }
+              const renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+              };
+              const renderTask = page.render(renderContext);
 
-  function prevPage() {
-    if (pageNum <= 1) return;
-    pageNum--;
-    queueRenderPage(pageNum);
-  }
+              renderTask.promise.then(function () {
+                pageRendering = false;
+                if (pageNumPending !== null) {
+                  renderPage(pageNumPending);
+                  pageNumPending = null;
+                }
+              });
+            });
 
-  function nextPage() {
-    if (pageNum >= pdfDoc.numPages) return;
-    pageNum++;
-    queueRenderPage(pageNum);
-  }
+            document.getElementById('page-num').textContent = num;
+          }
 
-  pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
-    pdfDoc = pdfDoc_;
-    document.getElementById('page-count').textContent = pdfDoc.numPages;
-    renderPage(pageNum);
-  });
+          function queueRenderPage(num) {
+            if (pageRendering) {
+              pageNumPending = num;
+            } else {
+              renderPage(num);
+            }
+          }
+
+          function prevPage() {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+          }
+
+          function nextPage() {
+            if (pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+          }
+
+          pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
+            pdfDoc = pdfDoc_;
+            document.getElementById('page-count').textContent = pdfDoc.numPages;
+            renderPage(pageNum);
+          });
+
 </script>
-    </body>
-    </html><!DOCTYPE html>
+</body>
+
+</html><!DOCTYPE html>
