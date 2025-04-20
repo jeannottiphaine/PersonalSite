@@ -1,163 +1,891 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Hide any overflow to prevent scrollbars */
+/* styles.css */
+@font-face {
+	font-family: "Chalkboard";
+	font-weight: 400;
+	font-style: normal;
+	src: url(/Assets/Chalkboard-Regular.ttf);
 }
 
+body {
+	font-family: Arial, sans-serif;
+	background: #f8f8f8;
+}
+
+#canvas-wrapper {
+      width: 80%;
+      margin: 0 auto;
+    }
+    canvas {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    button {
+      margin: 0 10px;
+      padding: 5px 15px;
+    }
+
+
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding-left: 30px;
-    padding-top: 20px;
-    padding-bottom: 15px;
-    padding-right: 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+	background: white;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000; /* s'assurer qu'il est au-dessus des autres éléments */
+}
+
+.header-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	margin-bottom: 10px;
+}
+
+h1 {
+	font-family: "Brush Script MT", cursive;
+	font-size: 60px;
+	margin: 0;
+}
+
+.logo {
+	width: 400px; /* Ajuster la taille du logo */
+	height: auto; /* Maintenir les proportions du logo */
+	margin-right: auto; /* Déplacer le logo à droite */
+}
+
+.icons {
+	font-size: 1.5em;
+	display: flex;
+	gap: 15px;
+	color: inherit;
+}
+
+.icons a {
+	color: inherit; /* Keeps the same color as the unvisited link */
+}
+
+.icons a:visited {
+	color: inherit; /* Keeps the same color as the unvisited link */
+}
+
+.social-icons {
+	display: flex;
+	gap: 15px; /* Space between icons */
+	align-items: center;
+}
+
+.social-icons a {
+	display: flex;
+	width: 40px; /* Adjust based on your image size */
+	height: 40px;
+	transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.social-icons a img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.social-icons a:hover {
+	background: none !important; /* Removes any background */
+	transform: scale(1.1);
+	opacity: 0.8;
 }
 
 nav {
-    display: flex;
-    justify-content: flex-start; /* Align the items to the left */
-    align-items: center;
-    gap: 15px; /* Reduce the gap between items */
-    padding: 10px 0; /* Adjust padding to make the bar more compact */
-    margin: 0;
+	display: flex; /* Flexbox for horizontal layout */
+	justify-content: flex-start; /* Align items to the left */
+	align-items: center; /* Vertically align items */
+	gap: 15px; /* Adjust the space between nav items */
+	/*padding: 10px 0;  Adjust padding for compactness */
+	margin: 0;
+	border-top: 2px solid #ddd;
+	list-style: none; /* Remove bullet points from list */
 }
 
-/* General styling for nav links */
 nav a {
-    display: inline-block;
-    width: 120px; /* Adjusted to reduce the button size */
-    height: 50px; /* Adjusted to reduce the button size */
-    text-align: center;
-    line-height: 50px; /* Center the text vertically */
-    text-decoration: none;
-    color: black;
-    position: relative;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Simplified transition */
-    z-index: 2; /* Ensure the link text is above the background */
+	display: inline-block;
+	width: 120px; /* Adjust width to fit content */
+	height: 50px; /* Adjust height */
+	text-align: center;
+	line-height: 50px; /* Vertically center the text */
+	text-decoration: none;
+	color: black;
+	position: relative;
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	z-index: 1;
 }
 
 nav a::before {
-    content: "";
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("ClassicButton.svg");
+	background-size: cover;
+	background-position: center;
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out;
+	z-index: -1;
+}
+
+nav a.active::before {
+	opacity: 1;
+}
+
+nav a.active {
+	color: white;
+	transform: rotate(-10deg);
+}
+
+nav a:hover::before {
+	opacity: 0.4;
+}
+
+nav a:hover {
+	color: rgb(51, 51, 51);
+	opacity: 0.7;
+	transform: rotate(-10deg);
+}
+
+
+/* Style pour le lien CV (gras et marron, sans hover) */
+.cv-link {
+  margin-left: auto; /* Cette propriété pousse le lien CV tout à gauche */
+}
+
+.cv-link a {
+  color: #8B4513; /* Marron */
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold; /* Mettre le texte en gras */
+  padding: 5px 10px;
+}
+
+/* Supprimer tous les effets au survol */
+.cv-link a:hover {
+  color: #8B4513; /* Maintenir la couleur marron */
+  text-decoration: none; /* Pas de soulignement */
+  background-color: transparent; /* Pas de changement de fond */
+  border: none; /* Pas de bordure */
+}
+
+main {
+	display: flex;
+	justify-content: space-around;
+	margin: 0 auto;
+}
+
+main.projects {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 70%;
+}
+
+section {
+	width: 45%;
+}
+
+h2 {
+	font-size: 1.8em;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+	color: rgb(129, 129, 129);
+}
+
+/* Cards for Background */
+
+#Container-CV {
+	max-width: 85%;
+	padding-top: 5%;
+	flex-wrap: wrap;
+	justify-content: center;
+	display: flex;
+}
+
+.card {
+	background: white;
+	padding: 30px;
+	padding-left: 40px;
+	border-radius: 15px;
+	box-shadow: -8px 8px 0 0 rgba(0, 0, 0, 0.07);
+	margin-bottom: 30px;
+	border: 0.2px solid rgba(102, 102, 102, 0.3);
+	transition: 0.3s;
+	border: solid, rgba(0, 0, 0, 0.3);
+}
+
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 20px;
+	padding: 20px;
+}
+
+.card:hover {
+	box-shadow: -12px 12px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+	margin: 0;
+	font-size: 1.5em;
+}
+
+.card ul {
+	padding-left: 30px;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.timeline-container {
+	display: flex;
+	justify-content: center; /* Centers the content */
+	align-items: flex-start;
+	position: relative;
+	width: 80%;
+	gap: 50px; /* Adds space between the two columns */
+}
+
+.experience {
+	width: 40%;
+}
+
+.academic {
+	width: 40%; /* Keeps both sections balanced */
+}
+
+.timeline {
+	width: 20%;
+	position: relative;
+	margin: 20px 0;
+}
+
+.timeline::before {
+	content: "";
+	height: 100%;
+	width: 2px;
+	background: rgb(114, 113, 113);
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+}
+
+.timeline::after {
+	content: "";
+	height: 110px;
+	width: 0;
+	border: 5px dashed #f8f8f8;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+}
+
+/* Year markers (Positioned in the center) */
+.year {
+	font-family: "Chalkboard";
+	font-size: 34px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	font-weight: bold;
+	background: #f8f8f8;
+	padding: 15px 10px;
+	z-index: 9;
+}
+
+.year:nth-child(1) {
+	top: 5%;
+}
+
+.year:nth-child(2) {
+	top: 27%;
+}
+
+.year:nth-child(3) {
+	top: 43%;
+}
+/* Projects Page */
+
+/* Search bar */
+
+.search-bar {
+	display: flex;
+	align-items: center;
+	background: white;
+	padding: 10px 15px;
+	border-radius: 25px;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+	width: 30%;
+}
+
+.search-bar input {
+	border: none;
+	outline: none;
+	flex: 1;
+	padding: 10px;
+	font-size: 1em;
+}
+
+.search-bar i {
+	color: gray;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+/* 🔹 Conteneur du bandeau de recherche + filtres */
+
+.filter-menu {
+    display: none;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    width: 250px;
+}
+
+.filter-menu.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.icons-container {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.filters-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	margin-bottom: 10px;
+	/* background-color: #f5f5f5; */
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+#sortMenu {
+    display: none; /* hidden by default */
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    position: absolute;
+    top: 100%; /* positions it directly below the icons-container */
+    left: 0;   /* aligns it to the left */
+    z-index: 999;
+}
+
+#sortMenu.visible {
+    display: block;
+}
+
+.icons-container {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+	align-items: center;
+}
+
+
+/* Icône de filtre */
+.filter-icon {
+    width: 20px; /* Adjust the size */
+    height: 20px; /* Keep it proportional */
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    background: none;
+}
+.filter-icon:hover {
+    color: black;
+}
+
+/* Bouton de reset sous forme d'icône */
+.reset-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.reset-icon:hover {
+    transform: rotate(15deg); /* Slight rotation on hover */
+    opacity: 0.7;
+}
+
+/* Cards details */
+
+.cards-container-projects {
+	/*display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 80px;*/
+	width: 100%;
+	/* max-width: 50%; */
+	padding: 40px;
+	flex-wrap: wrap;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.card-project {
+	display: flex;
+	flex: 1 0 38%;
+	align-items: center;
+	justify-content: space-between;
+	background: white;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s;
+	max-width: 50%;
+}
+.img-card-project {
+  object-fit: contain;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  min-width: 120px;
+  min-height: 120px;
+  border: 2px solid grey;
+}
+
+.img-card-container {
+  position: relative;
+  display: inline-block;
+}
+
+.img-card-crown {
+  position: absolute;
+  top: -20%; /* Adjust this to position the crown above the image */
+  left: 80%; /* Center the crown horizontally */
+  transform: translateX(-50%); /* Center the crown */
+  width: 30px; /* Size of the crown image */
+  height: 30px; /* Size of the crown image */
+}
+
+/* Ajustement pour éviter l'effet "cassé" après filtrage */
+.card-project[style*="display: block"] {
+	display: flex !important;
+}
+
+/* Cards Container */
+.cards-container-projects a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: white;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 20px;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s;
+	width: 100%;
+	text-decoration: none; /* Remove underline from links */
+	color: inherit; /* Ensure that the text color is inherited */
+}
+
+.cards-container-projects a:hover {
+	transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
+/* Ensure active links don't have unwanted decorations */
+.cards-container-projects a:active {
+	color: #1565c0; /* Optional: you can change the color of the active card */
+}
+
+/* Cards tags */
+
+.tags-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: center;
+}
+
+.tags {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: center;
+}
+
+.card-content-projects > p {
+	margin-right: 50px;
+}
+
+.tag {
+	padding: 6px 14px;
+	border-radius: 12px;
+	font-weight: bold;
+	font-size: 0.85em;
+	display: inline-block;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+.card-tags {
+	display: flex;
+	gap: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.card-tag {
+	padding: 4px 8px;
+	border-radius: 8px;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+.tag[data-category="Travail"] {
+	background: #a8e6cf; /* Vert pastel */
+	color: #2e7d32;
+}
+
+.tag[data-category="Perso"] {
+	background: #d4a5a5; /* Lavande */
+	color: #6a1b9a;
+}
+
+.tag[data-category="Ecole"] {
+	background: #b3e5fc; /* Bleu ciel */
+	color: #1565c0;
+}
+
+.tag[data-category="Event"] {
+	background: #ffd3b6; /* Pêche */
+	color: #e65100;
+}
+
+.tag[data-category="Association"] {
+	background: #a8e6cf; /* Jaune pastel #fff9b0 et #f57f17*/
+	color:  #2e7d32; /* Couleur travail */
+}
+
+.tag:hover {
+	transform: scale(1.1);
+	opacity: 0.8;
+}
+
+.card-tag[data-category="Travail"] {
+	background: #a8e6cf;
+	color: #2e7d32;
+}
+.card-tag[data-category="Perso"] {
+	background: #d4a5a5;
+	color: #6a1b9a;
+}
+.card-tag[data-category="Ecole"] {
+	background: #b3e5fc;
+	color: #1565c0;
+}
+.card-tag[data-category="Event"] {
+	background: #ffd3b6;
+	color: #e65100;
+}
+.card-tag[data-category="Association"] {
+	background: #fff9b0;
+	color: #f57f17;
+}
+
+/* Reset filter */
+
+#resetFilter {
+	background: none;
+	color: white;
+	border: none;
+	padding: 8px 15px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+#resetFilter:hover {
+	background: none;
+	transform: scale(1.05);
+}
+
+h4 {
+	text-align: left;
+	font-size: 15px;
+	font-weight: lighter;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+
+	color: rgb(49, 49, 49);
+}
+
+/* Contact Page */
+
+#container-contact {
+	padding-top: 60px;
+	max-width: 60%;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.pigeon-img {
+	width: 100%;
+	max-width: 350px;
+	height: auto;
+}
+
+#pigeon-wrapper {
+	box-sizing: border-box;
+	width: 40%;
+	margin: 20px;
+}
+
+.contact-form {
+	box-sizing: border-box;
+	padding: 20px;
+	width: 50%;
+	/* width: 100%; /* Adjust as needed
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 30%;
+    margin-top: 25%;*/
+}
+
+.contact-form > form {
+	max-width: 80%;
+}
+
+.contact-form h2 {
+	margin-bottom: 12px;
+}
+
+.contact-form label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.contact-form input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 12px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	height: 40px; /* Fixed height for name and email fields */
+}
+
+.contact-form textarea {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 12px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	resize: vertical; /* Allows resizing only vertically */
+	min-height: 80px; /* Ensures a reasonable initial height */
+	max-height: 200px; /* Limits how much it can expand */
+}
+
+.contact-form button {
+	padding: 10px 15px;
+	border: none;
+	background-image: url(../Assets/ClassicButton.svg);
+	color: white;
+	cursor: pointer;
+	background-size: cover; /* Ensures the image covers the button */
+	background-repeat: no-repeat; /* Prevents the image from repeating */
+	background-position: center; /* Centers the image */
+}
+.contact-form button:hover {
+	transform: scale(1.1); /* Make the button 10% bigger on hover */
+}
+
+/*project detail*/
+
+.project-detail {
+	padding: 20px;
+	padding-top: 3%;
+	width: 80%;
+}
+.project-detail p{
+	font-size: larger;
+	line-height: 150%;
+}
+
+.project-detail ul li{
+	font-size: larger;
+	line-height: 150%;
+}
+
+.project-detail h2{
+	padding-top: 2%;
+	font-size: 50px;
+	text-align: left;
+}
+
+.project-detail h3{
+	padding-top: 2%;
+	font-size: 30px;
+	color: #333;
+	text-align: left;
+}
+
+.URL-Projects{
+	color: #616060;
+}
+
+.URL-Projects a{
+	text-decoration: none;
+	color : inherit;
+}
+
+.URL-Projects a:hover{
+	color: black;
+	font-weight: bold;
+}
+
+.project-content {
+	display: flex;
+	justify-content: space-around;
+	justify-items: center;
+	align-items: center;
+	gap: 30px;
+	margin-bottom: 20px;
+	margin-top: 30px;
+	flex-wrap: wrap;
+	/* vertical-align: middle; */
+}
+
+.project-content:nth-child(even) {
+	flex-direction: row;
+}
+.project-content:nth-child(odd) {
+	flex-direction: row-reverse;
+}
+
+
+/*.project-img-placeholder {
+	width: 50%;
+	margin-bottom: 10px;
+}*/
+
+.img-projects{
+	max-width: 100%;
+	height: auto;
+	max-height: 450px;
+}
+
+#project-img-wrapper {
+    box-sizing: border-box;
+    width: 50%;
+    display: flex; /* Enables flexbox */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+}
+
+.project-description {
+	width: 50%;
+	font-size: 1.2em;
+	color: #333;
+	flex: 1;
+	text-align: justify;
+}
+
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* Flexible column size */
+    gap: 6px; /* Consistent spacing */
+    grid-auto-flow: dense; /* Fills the available gaps in the grid */
+    width: 100%;
+}
+
+.img-projects-grid {
+    width: 100%;
+    height: 100%; /* Image height adjusts dynamically */
+    object-fit: cover; /* Ensures images fill their grid cells */
+    border-radius: 8px; /* Optional: smooth edges */
+}
+
+
+/*.photo-grid #project-img-wrapper {
+	height: 80px;
+	max-width: 150px;
+	margin: auto;
+
+} */
+
+
+/* Optional: Some images span larger for variation */
+.photo-grid img:nth-child(3n) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Avoids last row breaking the rectangular grid */
+.photo-grid img:last-child {
+    grid-column: auto;
+    grid-row: auto;
+}
+
+.project-media{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('ClassicButton.svg'); /* Background image for the button */
-    background-size: cover; /* Ensure it covers the button area */
-    background-position: center; /* Center the background image */
-    opacity: 0; /* Default opacity */
-    transition: opacity 0.1s ease-in-out;
-    z-index: -1; /* Keep the background behind the text */
 }
 
-nav a.active::before {
-    opacity: 1; /* Ensure the background image is fully visible for active state */
-}
-
-nav a.active {
-    color: white; /* Make the text white when active */
-    transform: rotate(-10deg); /* Apply rotation to the active item */
-    justify-content: center;
-    transform-origin: center center;
-}
-
-nav a:hover::before {
-    opacity: 0.4; /* Reduce opacity on hover */
-}
-
-nav a:hover {
-    color: rgb(51, 51, 51); /* Make the text white on hover */
-    opacity: 0.7; /* Reduce opacity */
-    transform: rotate(-10deg); /* Slight rotation on hover */
-}
-
-
-
-main {
-    display: flex;
-    justify-content: space-around;
-    padding: 40px;
-    flex-wrap: wrap;
-}
-
-.hero {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding-left: 20%;
-}
-
-.hero h1 {
-    font-family: 'Brush Script MT', cursive;
-    font-size: 80px;
-    color: #333;
-}
-
-.hero p {
-    font-size: 30px;
-    color: #555;
-}
-
-
-.social-icons {
-    display: flex;
-    gap: 15px; /* Space between icons */
-    align-items: center;
-    padding-right: 50px;
-    z-index: 2;
-}
-
-.social-icons a {
-    display: inline-block;
-    width: 40px; /* Adjust based on your image size */
-    height: 40px;
-    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-}
-
-.social-icons a img {
+#project-media{
+    position: relative;
     width: 100%;
-    height: auto;
-    display: block;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
 }
 
-.social-icons a:hover {
-    background: none !important; /* Removes any background */
-    transform: scale(1.1);
-    opacity: 0.8;
-}
-.corner-image {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 550px;
+/*.photo-grid.project-img-placeholder {
+	height: 80px;
+}*/
+
+.project-links a {
+	font-size: 1.1em;
+	color: #3498db;
+	text-decoration: none;
+	transition: color 0.3s;
 }
 
-.corner-video {
-    transform: scale(1.2);
-    position: absolute;
-    left: -250px; /* Set it to 0 to make it touch the left edge */
-    bottom: 80px;
-    overflow: hidden; /* Ensure that the part of the video that goes out is hidden */
-    z-index: 1;
+.project-links a:hover {
+	color: #2980b9;
 }
 
 .cv-bubble {
@@ -187,130 +915,186 @@ main {
             transform: scale(1.2);
         }
 
-
-/* Responsive Design */
 @media screen and (max-width: 1023px) {
-    nav {
-        gap: 12px; /* Reduce the gap */
-        padding: 8px 0; /* Adjust padding for smaller screens */
-        line-height: 50px;
-    }
+	#pigeon-wrapper {
+		width: 100%;
+	}
 
-    nav a {
-        width: 100px; /* Adjust button width for tablets */
-        height: 40px; /* Adjust button height for tablets */
-        font-size: 14px; /* Adjust font size */
-    }
+	.contact-form > form {
+		max-width: 100%;
+	}
 
-    .social-icons{
+	.contact-form {
+		width: 100%;
+	}
+
+	#container-contact {
+		max-width: 90%;
+	}
+
+
+}
+
+@media screen and (max-width: 1023px) {
+	#project-img-wrapper {
+		width: 100%;
+	}
+
+	.project-content {
+		max-width: 90%;
+	}
+
+	.project-detail {
+		justify-items: center;
+	}
+
+	.project-detail h2 {
+		text-align: center;
+	}
+
+	.logo {
+		max-width: 55%;
+	}
+
+	.social-icons{
 		max-width: 20%;
 	}
 
-
-
-    .hero {
-        display: flex;
-        flex-direction: column; /* Align elements vertically */
-        justify-content: center; /* Center vertically */
-        align-items: center; /* Center horizontally */
-        text-align: center; /* Ensure the text is centered */
-        padding: 20px; /* Optional: Add padding for better spacing */
-    }
-
-    .corner-video {
-        width: 100%;
-        height: auto;
-        max-width: 900px;
-        margin: 0 auto; /* Center the video horizontally */
-        position: relative; /* Change from absolute to relative to avoid overlapping */
-        left: 0; /* Reset the left property */
-        bottom: 30%; /* Adjust the bottom position for better responsiveness */
-        transform: scale(1); /* Reset the scale */
-        z-index: 1;
-    }
-
-    .nav-container {
-        flex-direction: column; /* Stack items vertically on smaller screens */
-        align-items: center; /* Center items horizontally */
-    }
-
-    .social-icons {
-        margin-top: 15px; /* Add some space between nav and social icons */
-        justify-content: center; /* Center icons horizontally */
-        gap: 15px; /* Optional: space between icons */
-    }
 }
 
-/* Even smaller screens (max-width: 768px) */
-@media screen and (max-width: 768px) {
-    header {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+footer {
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
     display: flex;
-    flex-direction: column; /* Stack content vertically */
-    padding: 10px; /* Add some padding for spacing */
-    }
+    flex-direction: column;
+    align-items: center;
+}
 
-    nav {
-        gap: 8px; /* Further reduce the gap */
-        padding: 6px 0; /* Further adjust padding */
-        line-height: 40px;
-    }
+.footer-content .social-icons {
+    margin-top: 10px;
+}
 
-    nav a {
-        width: 90px; /* Adjust button width for mobile */
-        height: 35px; /* Adjust button height for mobile */
-        font-size: 12px; /* Adjust font size for mobile */
-    }
+.footer-content .social-icons a {
+    margin: 0 10px;
+}
 
-    .social-icons{
-		max-width: 15%;
-	}
+/* Reset body and html to prevent margin/padding issues */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll if there's any overflow */
+}
 
-    .hero p {
-        font-size: 18px;
-        display: flex;
-        flex-direction: column; /* Align elements vertically */
-        justify-content: center; /* Center vertically */
-        align-items: center; /* Center horizontally */
-        text-align: center; /* Ensure the text is centered */
-        padding: 20px; /* Optional: Add padding for better spacing */
+/* Responsive: Mobile et tablettes */
+@media screen and (max-width: 768px) {
+.timeline {
+display: none; /* Cache la barre d'années */
+}
+
+/* Expérience et Éducation en colonne */
+.timeline-container {
+flex-direction: column;
+width: 100%;
+}
+
+.experience, .academic {
+width: 100%; /* Prend toute la largeur */
+}
+
+.card {
+margin: 0 auto 20px auto; /* Centre les cartes */
+}
+
+.cards-container-projects {
+flex-wrap: wrap;
+width: 100%;
+
+}
+
+.card-project {
+flex-wrap: wrap;
+max-width: 100%;
+}
+
+.filters-container{
+flex-wrap: wrap;
+}
+
+.search-bar{
+width: 90%;
+}
+
+main.projects{
+width: 90%;
+}
+
+.card-content-projects > p {
+margin-right: 5px;
+text-align: justify;
+}
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Assurez-vous que la hauteur est de 100% de la vue */
+	padding-top: 80px; /* adapte selon la hauteur de ton header */
+
+}
+
+.hero {
+    flex: 2; /* Cela prend 3/4 de l'espace disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.hero h1 {    font-family: 'Brush Script MT', cursive;    font-size: 80px;    color: #333;}
+.hero p {    font-size: 30px;    color: #555;}
+
+.corner-video {
+    flex: 4; /* Cela prend 1/4 de l'espace disponible */
+    width: 100%; /* La largeur est 100% du conteneur */
+}
+
+.corner-image {
+    flex: 1;
+    width: 80%;
+    object-fit: contain;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* Media Query pour les écrans de moins de 1000px */
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column; /* Aligne les éléments en colonne quand l'écran est plus petit */
+            height: 50vh;
+        padding-top: 80px; /* adapte selon la hauteur de ton header */
     }
 
     .hero {
-        display: flex;
-        flex-direction: column; /* Align elements vertically */
-        justify-content: center; /* Center vertically */
-        align-items: center; /* Center horizontally */
-        text-align: center; /* Ensure the text is centered */
-        padding: 15px; /* Optional: Adjust padding for small screens */
+        flex: none; /* Permet à .hero de prendre la pleine largeur sous 1000px */
+        width: 90%; /* S'assure que la largeur de .hero est de 100% */
     }
 
     .corner-video {
-        width: 100%;
-        margin: 0 auto; /* Center it horizontally */
-        overflow: hidden; /* Ensure part of the video going out is hidden */
-        display: block; /* Ensure the video is block-level */
-        position: relative; /* Set position to relative for responsiveness */
-        bottom: 30%; /* Adjust the bottom position further for smaller screens */
-        transform: scale(1); /* Reset scaling */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    nav {
-        gap: 5px; /* Reduce the gap even further */
-        padding: 4px 0; /* Reduce the padding for very small screens */
-        line-height: 30px;
+        flex: none; /* Permet à .corner-video de prendre la pleine largeur sous 1000px */
+        width: 80%; /* S'assure que la largeur de .corner-video est de 100% */
     }
 
-    nav a {
-        width: 80px; /* Adjust button width for small screens */
-        height: 30px; /* Adjust button height for small screens */
-        font-size: 10px; /* Further adjust font size for small screens */
+    .corner-image {
+        flex: none; /* Permet à .corner-image de prendre la pleine largeur sous 1000px */
+        width: 70%; /* S'assure que la largeur de .corner-image est de 100% */
+        justify-content: center;
+        max-width: 70%;
+        max-height: 70%;
+        padding-top: 150px;
     }
-
-    .social-icons{
-		max-width: 15%;
-	}
 }
