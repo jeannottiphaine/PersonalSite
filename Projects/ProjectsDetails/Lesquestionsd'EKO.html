@@ -105,15 +105,15 @@
                 </div>
 
                 <h3>Lire la reco du projet</h3>
-                      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
-                    <div id="canvas-wrapper-pdf">
-                      <canvas id="canvas-pdf"></canvas>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
+                    <div id="canvas-wrapper">
+                      <canvas id="canvas"></canvas>
                     </div>
 
 
-                    <button-pdf onclick="prevPage()">⬅️ Page précédente</button-pdf>
+                    <button onclick="prevPage()">⬅️ Page précédente</button>
                     <span>Page <span id="page-num">1</span> / <span id="page-count">?</span></span>
-                    <button-pdf onclick="nextPage()">Page suivante ➡️</button-pdf>
+                    <button onclick="nextPage()">Page suivante ➡️</button>
 
                 <h3>Equipe</h3>
                     <p> Lucie Renaut, Djeah Florenza, Erwan Chauvigné, Tiphaine Jeannot </p>
@@ -132,7 +132,7 @@
         </main>
 
     <script>
-  const url = "../Medias/EKO_reco.pdf"; // Remplace par le chemin vers ton PDF
+  const url = "../../Projects/Medias/EKO_reco.pdf"; // Remplace par le chemin vers ton PDF
   const pdfjsLib = window['pdfjs-dist/build/pdf'];
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.worker.min.js';
 
@@ -140,7 +140,7 @@
       pageNum = 1,
       pageRendering = false,
       pageNumPending = null,
-      canvas = document.getElementById('pdf-canvas'),
+      canvas = document.getElementById('canvas'),
       ctx = canvas.getContext('2d');
 
   function renderPage(num) {

@@ -23,20 +23,6 @@ body {
       margin-bottom: 10px;
     }
 
-#canvas-wrapper-pdf {
-      width: 50%;
-      margin: 0 auto;
-    }
-    canvas-pdf {
-      width: 100%;
-      height: auto;
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
-    }
-    button-pdf {
-      margin: 0 10px;
-      padding: 5px 15px;
-    }
 
 header {
 	background: white;
