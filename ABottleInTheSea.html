@@ -29,13 +29,26 @@
 
         #click-zone {
             position: absolute;
-            top: 30%;
-            left: 30%;
-            width: 40%;
+            top: 5%;
+            left: 42%;
+            width: 16%;
             height: 40%;
             cursor: pointer;
-            z-index: 3; /* Click zone always on top */
+            z-index: 3;
+            display: none;
         }
+
+        #click-zone-2 {
+            position: absolute;
+            top: 75%;
+            left: 28%;
+            width: 44%;
+            height: 12%;
+            cursor: pointer;
+            z-index: 3;
+            display: none;
+        }
+
     </style>
 </head>
 
@@ -46,31 +59,46 @@
             Votre navigateur ne supporte pas la balise vidéo.
         </video>
         <div id="click-zone"></div> <!-- Big invisible button -->
+        <div id="click-zone-2"></div> <!-- Big invisible button -->
     </div>
 
     <script>
         const video = document.getElementById('myVideo');
         const clickZone = document.getElementById('click-zone');
+        const clickZone2 = document.getElementById('click-zone-2');
 
         let currentSection = 0;
         let isLooping = false;
 
         const sections = [
-            { start: 0, end: 10.02, next: 10.03, loop: true },
-            { start: 10.03, end: 13.50, next: 13.51, loop: false },
-            { start: 13.51, end: 16.94, next: 16.95, loop: true },
-            { start: 16.95, end: 24.28, next: 24.29, loop: false },
-            { start: 24.29, end: 30, next: "redirect", loop: true }
+            { start: 0, end: 10.02, next: 10.03, loop: true },     // click-zone
+            { start: 10.03, end: 13.50, next: 13.51, loop: false }, // no click-zone
+            { start: 13.51, end: 16.94, next: 16.95, loop: true },  // click-zone
+            { start: 16.95, end: 24.28, next: 24.29, loop: false }, // no click-zone
+            { start: 24.29, end: 30, next: "redirect", loop: true } // click-zone-2
         ];
 
         function setSection(index) {
             currentSection = index;
             isLooping = sections[index].loop;
+            updateClickZones(); // Update visibility
             video.currentTime = sections[index].start;
             video.play();
         }
 
-        clickZone.onclick = () => {
+        function updateClickZones() {
+            // Hide both by default
+            clickZone.style.display = "none";
+            clickZone2.style.display = "none";
+
+            if ((currentSection === 0 || currentSection === 2) && isLooping) {
+                clickZone.style.display = "block";
+            } else if (currentSection === 4 && isLooping) {
+                clickZone2.style.display = "block";
+            }
+        }
+
+        clickZone.onclick = clickZone2.onclick = () => {
             const next = sections[currentSection].next;
             if (next === "redirect") {
                 window.location.href = "index.html";
@@ -82,7 +110,7 @@
         function monitorTime() {
             const pos = video.currentTime;
             const { start, end, loop } = sections[currentSection];
-            const epsilon = 0.05; // Higher precision tolerance
+            const epsilon = 0.05;
 
             if (pos >= end - epsilon) {
                 if (loop) {
@@ -92,12 +120,13 @@
                 }
             }
 
-            requestAnimationFrame(monitorTime); // Continue monitoring on every frame
+            requestAnimationFrame(monitorTime);
         }
 
         video.addEventListener('play', monitorTime);
         setSection(0);
     </script>
+
 </body>
 
 </html>
