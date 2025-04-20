@@ -35,7 +35,7 @@
 
                 <h3>Contexte & objectifs</h3>
                 <div class="project-content">
-                    <div class="project-img-wrapper">
+                    <div id="project-img-wrapper">
                         <img src="../Medias/EKO_5.svg" alt="Blackminton Logo" class="img-projects"></img>
                     </div>
                     <div class="project-description">
@@ -53,7 +53,7 @@
 
 
                 <div class="project-content">
-                    <div class="project-img-wrapper">
+                    <div id="project-img-wrapper">
                         <img src="../Medias/EKO_4.svg" alt="Blackminton Logo" class="img-projects"></img>
                     </div>
                     <div class="project-description">
@@ -106,14 +106,14 @@
 
                 <h3>Lire la reco du projet</h3>
                       <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
-                    <div id="canvas-wrapper-pd">
-                      <canvas id="pdf-canvas"></canvas>
+                    <div id="canvas-wrapper-pdf">
+                      <canvas id="canvas-pdf"></canvas>
                     </div>
 
 
-                    <button onclick="prevPage()">⬅️ Page précédente</button>
+                    <button-pdf onclick="prevPage()">⬅️ Page précédente</button-pdf>
                     <span>Page <span id="page-num">1</span> / <span id="page-count">?</span></span>
-                    <button onclick="nextPage()">Page suivante ➡️</button>
+                    <button-pdf onclick="nextPage()">Page suivante ➡️</button-pdf>
 
                 <h3>Equipe</h3>
                     <p> Lucie Renaut, Djeah Florenza, Erwan Chauvigné, Tiphaine Jeannot </p>
@@ -132,7 +132,7 @@
         </main>
 
     <script>
-  const url = "../../Projects/Medias/EKO_reco.pdf"; // Remplace par le chemin vers ton PDF
+  const url = "../Medias/EKO_reco.pdf"; // Remplace par le chemin vers ton PDF
   const pdfjsLib = window['pdfjs-dist/build/pdf'];
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.worker.min.js';
 
