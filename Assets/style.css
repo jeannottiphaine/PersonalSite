@@ -1014,6 +1014,102 @@ html, body {
     overflow-x: hidden; /* Prevent horizontal scroll if there's any overflow */
 }
 
+.contact-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 20px;
+}
+
+#pigeon-wrapper {
+    width: 25%;
+}
+
+.contact-form {
+    width: 40%;
+}
+
+.contact-coords-wrapper {
+    width: 30%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.toggle-header {
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #e8e8e8;
+    border-radius: 6px;
+}
+
+#arrow {
+    transition: transform 0.3s ease;
+}
+
+#coordonnees {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.rotate {
+    transform: rotate(90deg);
+}
+
+.coords-link {
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media screen and (max-width: 1023px) {
+    .contact-content {
+        flex-direction: column;
+    }
+
+    #pigeon-wrapper,
+    .contact-form,
+    .contact-coords-wrapper {
+        width: 100%;
+    }
+}
+
+.form-action-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.form-action-row button {
+    margin: 0;
+}
+
+.coords-link {
+    margin: 0;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.coords-link a {
+    text-decoration: underline;
+    color: #333;
+    font-weight: 500;
+}
+
 .download-cv {
     margin-top: 120px; /* Ajustez la valeur pour définir la distance souhaitée */
 }

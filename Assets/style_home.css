@@ -1080,9 +1080,14 @@ text-align: justify;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 90%;
 }
 .hero h1 {    font-family: 'Brush Script MT', cursive;    font-size: 80px;    color: #333;}
-.hero p {    font-size: 30px;    color: #555;}
+.hero p {
+    font-size: 30px;
+    color: #555;
+     width: 80%;
+}
 
 .corner-video {
     flex: 2;
