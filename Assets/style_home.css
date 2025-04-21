@@ -99,6 +99,32 @@ h1 {
 	opacity: 0.8;
 }
 
+.trad {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Espace après l'icône */
+}
+
+.trad a {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.trad a img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.trad a:hover {
+    background: none !important;
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
 nav {
 	display: flex; /* Flexbox for horizontal layout */
 	justify-content: flex-start; /* Align items to the left */
