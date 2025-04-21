@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="Assets/LittleMe_icon.svg" type="image/x-icon">
-    <title>Portfolio de Tiphaine Jeannot</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="Assets/style_home.css">
-</head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Favicon (onglet du navigateur) -->
+        <link rel="shortcut icon" href="Assets/LittleMe_icon.svg" type="image/x-icon">
+    
+        <!-- Titre affiché dans l’onglet et dans Google -->
+        <title>Tiphaine Jeannot - Planneur stratégique junior</title>
+    
+        <!-- Meta description (ce que Google affiche) -->
+        <meta name="description" content="Une pluie d’idées va bientôt s’abattre sur votre agence. Découvrez un univers créatif signé Ton Nom.">
+    
+        <!-- Open Graph (aperçu pour Google, réseaux sociaux, etc.) -->
+        <meta property="og:title" content="Tiphaine Jeannot – Planneur stratégique junior">
+        <meta property="og:description" content="Une pluie d’idées va bientôt s’abattre sur votre agence">
+        <meta property="og:image" content="https://tiphaine-jeannot.com/Assets/LittleMe_icon.svg">
+        <meta property="og:url" content="https://tiphaine-jeannot.com">
+        <meta property="og:type" content="website">
+    
+        <!-- Feuilles de styles -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="Assets/style_home.css">
+    </head>
+
 <body>
+
+<div id="google_translate_element"></div>
 
 <header>
         <div class="header-top">
-            <img src="Assets/LogoTJ.svg" alt="Logo" class="logo">
+            <img src="Assets/LogoTJ.svg" alt="Tiphaine Jeannot" class="logo">
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/tiphaine-jeannot/" title="LinkedIn" target="_blank"><img src="Assets/ButtonIn.svg" alt="LinkedIn"></a>
                 <a href="mailto:jeannot.tiphaine@gmail.com" title="Email"><img src="Assets/ButtonMail.svg" alt="Mail"></a>
@@ -25,7 +45,6 @@
             <a href="Contact/Contact.html">Contact</a></li>
         </nav>
 </header>
-
 
 <div class="container">
     <dotlottie-player src="https://lottie.host/7006f2fb-73d2-4bcb-a9af-cd5e697f0560/MhzY8x5GWe.lottie" background="transparent" speed="1" class="corner-video" loop autoplay></dotlottie-player>
@@ -53,6 +72,17 @@
 <a href="Assets/2025TJResume-Strategic-planning-FR.pdf" download="2025TJResume-Strategic-planning-FR.pdf"  target="_blank" class="cv-bubble">CV</a>
 
 <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {pageLanguage: 'fr'},
+        'google_translate_element'
+      );
+    }
+  </script>
+  
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
