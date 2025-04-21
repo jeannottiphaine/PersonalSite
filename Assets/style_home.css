@@ -1135,14 +1135,14 @@ text-align: justify;
     }
 
 
-    /*.corner-image {
+    .corner-image {
         flex: none;
         width: 70%;
         justify-content: center;
         max-width: 70%;
         max-height: 70%;
         padding-top: 150px;
-    } */
+    }
 
 	/*#google_translate_element {
 		position: fixed;
