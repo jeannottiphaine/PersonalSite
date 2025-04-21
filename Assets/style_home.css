@@ -1113,10 +1113,14 @@ text-align: justify;
     animation: bounce 2s infinite;
     margin: 1rem 0;
     position: absolute;
-    bottom: 10%; /* Position par défaut en bas */
+    bottom: 2%; /* Position par défaut en bas */
     left: 50%;
     transform: translateX(-50%);
 }
+
+html {
+	scroll-behavior: smooth;
+  }
 
 /* Media Query pour les écrans de moins de 1000px */
 @media (max-width: 768px) {

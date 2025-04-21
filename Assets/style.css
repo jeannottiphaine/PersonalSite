@@ -229,7 +229,7 @@ h2 {
 
 #Container-CV {
 	max-width: 85%;
-	padding-top: 5%;
+	padding-top: 2%;
 	flex-wrap: wrap;
 	justify-content: center;
 	display: flex;
@@ -1074,6 +1074,10 @@ html, body {
     margin-top: 10px;
 }
 
+html {
+	scroll-behavior: smooth;
+  }
+
 /* Responsive */
 @media screen and (max-width: 1023px) {
     .contact-content {
@@ -1111,11 +1115,11 @@ html, body {
 }
 
 .download-cv {
-    margin-top: 120px; /* Ajustez la valeur pour définir la distance souhaitée */
+    margin-top: 30px; /* Ajustez la valeur pour définir la distance souhaitée */
 }
 
 .download-cv a {
-    color: #6f4f28; /* Marron */
+    color: #875f59; /* Marron */
     font-weight: bold; /* Gras */
     text-decoration: none; /* Retirer la soulignure par défaut */
 }
