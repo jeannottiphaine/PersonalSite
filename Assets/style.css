@@ -1014,6 +1014,20 @@ html, body {
     overflow-x: hidden; /* Prevent horizontal scroll if there's any overflow */
 }
 
+.download-cv {
+    margin-top: 120px; /* Ajustez la valeur pour définir la distance souhaitée */
+}
+
+.download-cv a {
+    color: #6f4f28; /* Marron */
+    font-weight: bold; /* Gras */
+    text-decoration: none; /* Retirer la soulignure par défaut */
+}
+
+.download-cv a:hover {
+    text-decoration: underline; /* Souligner au survol si vous le souhaitez */
+}
+
 /* Responsive: Mobile et tablettes */
 @media screen and (max-width: 768px) {
 .timeline {
