@@ -1102,6 +1102,17 @@ text-align: justify;
     max-height: 80%;
 }
 
+.scroll-arrow {
+    text-align: center;
+    width: 50px;  /* Ajuste la taille de la flèche */
+    animation: bounce 2s infinite;
+    margin: 1rem 0;
+    position: absolute;
+    bottom: 10%; /* Position par défaut en bas */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* Media Query pour les écrans de moins de 1000px */
 @media (max-width: 768px) {
     .container {
@@ -1126,7 +1137,7 @@ text-align: justify;
     .corner-video {
         margin: 0;
         margin-left: 75px;
-        /*margin-top: 75px; */
+        margin-top: 75px; 
         width: 100%;
         display: flex;
         justify-content: center;
@@ -1143,6 +1154,8 @@ text-align: justify;
         max-height: 70%;
         padding-top: 150px;
     }
+
+
 
 	/*#google_translate_element {
 		position: fixed;
