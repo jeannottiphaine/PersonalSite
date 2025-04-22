@@ -983,7 +983,7 @@ h4 {
 	}
 
 	.social-icons{
-		max-width: 20%;
+		/*max-width: 20%;*/
 	}
 
 }
@@ -1099,6 +1099,20 @@ text-align: justify;
     align-items: center;
 }
 
+.alignement {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100vh;
+
+}
+
+#about {
+	height: auto;
+
+ }
+
+
 .corner-image {
     flex: 1;
     width: 80%;
@@ -1122,6 +1136,28 @@ html {
 	scroll-behavior: smooth;
   }
 
+.container-sable{
+	display:flex;
+	width:100%;
+	height: 100vh;
+	justify-content: space-between;
+	padding-top: 200px;
+		
+}
+.container-sable > .corner-image{
+	flex :1;
+	width : 80%;
+	object-fit: contain;
+	max-height: 80%;
+}
+.container-sable > .hero{
+	/*flex :2;*/
+	width : 90%;
+	margin-top: 100px;
+	margin: 0 auto;
+}
+	
+
 /* Media Query pour les écrans de moins de 1000px */
 @media (max-width: 768px) {
     .container {
@@ -1133,16 +1169,15 @@ html {
     .hero {
         flex: none; /* Permet à .hero de prendre la pleine largeur sous 1000px */
         width: 90%; /* S'assure que la largeur de .hero est de 100% */
-        margin-top: 175px;
+        margin-top: 120px;
 
     }
 
     .corner-video {
         margin: 0; /* Permet à .corner-video de prendre la pleine largeur sous 1000px */
         margin-left: 75px; /* S'assure que la largeur de .corner-video est de 100% */
-
-
     }
+
     .corner-video {
         margin: 0;
         margin-left: 75px;
@@ -1164,8 +1199,25 @@ html {
         padding-top: 150px;
     }
 
+	.alignement {
+		flex-direction: column;
+		padding-top: 20px;
+		height: auto;
+	}
 
+	.container-sable{
+		flex-direction: column-reverse;
+		padding-top: 20%;
+	}
 
+	.container-sable > .corner-image{
+		max-height: 100%;
+		padding-bottom: 0%;
+		padding-top: 0px;
+	}
+	.container-sable > .hero{
+		padding-top: 35%;
+	}
 	/*#google_translate_element {
 		position: fixed;
 		top: 10px;

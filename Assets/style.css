@@ -28,7 +28,7 @@ body {
       padding: 5px 15px;
     }
 
-
+	
 header {
 	background: white;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -49,6 +49,7 @@ h1 {
 	font-size: 60px;
 	margin: 0;
 }
+
 
 .logo {
 	width: 400px; /* Ajuster la taille du logo */
@@ -1077,6 +1078,7 @@ html, body {
 html {
 	scroll-behavior: smooth;
   }
+
 
 /* Responsive */
 @media screen and (max-width: 1023px) {
